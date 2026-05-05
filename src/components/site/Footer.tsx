@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Footer = () => (
   <footer className="relative pt-20 pb-10 border-t border-border/60">
     <div className="mx-auto max-w-7xl px-5 lg:px-8">
@@ -19,11 +21,11 @@ export const Footer = () => (
         <div>
           <div className="text-xs uppercase tracking-widest text-primary mb-4">Brzi linkovi</div>
           <ul className="space-y-2 text-foreground/80">
-            <li><a href="#pocetna" className="hover:text-foreground">Početna</a></li>
-            <li><a href="#o-nama" className="hover:text-foreground">O nama</a></li>
-            <li><a href="#galerija" className="hover:text-foreground">Galerija</a></li>
-            <li><a href="#ponude" className="hover:text-foreground">Ponude</a></li>
-            <li><a href="#kontakt" className="hover:text-foreground">Kontakt</a></li>
+            <li><Link to="/" className="hover:text-foreground">Početna</Link></li>
+            <li><Link to="/o-nama" className="hover:text-foreground">O nama</Link></li>
+            <li><Link to="/galerija" className="hover:text-foreground">Galerija</Link></li>
+            <li><Link to="/ponude" className="hover:text-foreground">Ponude</Link></li>
+            <li><Link to="/kontakt" className="hover:text-foreground">Kontakt</Link></li>
           </ul>
         </div>
         <div>

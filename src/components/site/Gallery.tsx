@@ -24,7 +24,7 @@ export const Gallery = () => (
           title={<>Atmosfera koja <span className="text-gradient italic">oduzima dah</span></>}
         />
         <Button asChild variant="outlineLux" size="lg" className="reveal-up">
-          <a href="#kontakt">Pogledaj celu galeriju <ArrowRight className="h-4 w-4" /></a>
+          <a href="/galerija">Pogledaj celu galeriju <ArrowRight className="h-4 w-4" /></a>
         </Button>
       </div>
 
