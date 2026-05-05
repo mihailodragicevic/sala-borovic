@@ -36,7 +36,7 @@ export const About = () => (
               <a href="tel:+381641234567"><Phone className="h-4 w-4" /> Zakažite obilazak</a>
             </Button>
             <Button asChild variant="outlineLux" size="lg">
-              <a href="#ponude">Pogledajte ponudu</a>
+              <a href="/ponude">Pogledajte ponudu</a>
             </Button>
           </div>
         </div>

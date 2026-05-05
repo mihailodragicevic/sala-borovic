@@ -69,7 +69,7 @@ export const Hero = () => {
               <a href="tel:+381641234567"><Phone className="h-5 w-5" /> Pozovite nas</a>
             </Button>
             <Button asChild variant="glass" size="xl">
-              <a href="#kontakt"><MessageCircle className="h-5 w-5" /> Pošaljite poruku</a>
+              <a href="/kontakt"><MessageCircle className="h-5 w-5" /> Pošaljite poruku</a>
             </Button>
           </div>
 
