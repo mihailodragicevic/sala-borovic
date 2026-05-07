@@ -60,6 +60,10 @@ export const Testimonials = () => {
                 />
               ))}
             </div>
+
+            <div className="relative mt-6 h-1 overflow-hidden rounded-full bg-border">
+              <div key={i} className="absolute inset-0 rounded-full bg-gradient-primary origin-left animate-testimonial-progress" />
+            </div>
           </div>
         </div>
       </div>

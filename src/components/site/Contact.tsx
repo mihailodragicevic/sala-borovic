@@ -31,7 +31,7 @@ const countryLabels: Record<CountryCode, string> = {
 export const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneValue, setPhoneValue] = useState<string | undefined>("+381");
+  const [phoneValue, setPhoneValue] = useState<string | undefined>(undefined);
   const [phoneError, setPhoneError] = useState("");
 
   const handlePhoneChange = (value: string | undefined) => {
@@ -116,6 +116,7 @@ export const Contact = () => {
                       border-radius: 0.375rem;
                       transition: border-color 0.2s ease;
                       font-family: inherit;
+                      position: relative;
                     }
 
                     .PhoneInput.error {
@@ -146,11 +147,6 @@ export const Contact = () => {
                       gap: 0.25rem;
                       color: inherit;
                       outline: none;
-                      transition: opacity 0.15s ease;
-                    }
-
-                    .PhoneInputCountrySelect:hover {
-                      opacity: 0.85;
                     }
 
                     .PhoneInputCountrySelect::after {
@@ -158,6 +154,11 @@ export const Contact = () => {
                       font-size: 0.65rem;
                       opacity: 0.7;
                       margin-left: 0.25rem;
+                      transition: transform 0.2s ease;
+                    }
+
+                    .PhoneInputCountrySelect:hover::after {
+                      transform: rotate(180deg);
                     }
 
                     .PhoneInputNumber {
@@ -174,80 +175,16 @@ export const Contact = () => {
                       color: rgba(0, 0, 0, 0.4);
                     }
 
-                    .PhoneInputCountryList {
-                      position: absolute;
-                      top: 100%;
-                      left: 0;
-                      right: 0;
-                      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.92) 100%);
-                      border: 2px solid var(--border);
-                      border-radius: 0.5rem;
-                      max-height: 280px;
-                      overflow-y: auto;
-                      z-index: 50;
-                      margin-top: 0.5rem;
-                      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.05);
-                      backdrop-filter: blur(10px);
-                    }
-
-                    .PhoneInputCountryList::-webkit-scrollbar {
-                      width: 6px;
-                    }
-
-                    .PhoneInputCountryList::-webkit-scrollbar-track {
-                      background: transparent;
-                    }
-
-                    .PhoneInputCountryList::-webkit-scrollbar-thumb {
-                      background: rgba(0, 0, 0, 0.2);
-                      border-radius: 3px;
-                    }
-
-                    .PhoneInputCountryList::-webkit-scrollbar-thumb:hover {
-                      background: rgba(0, 0, 0, 0.3);
-                    }
-
-                    .PhoneInputCountryOption {
-                      padding: 0.85rem 1rem;
-                      cursor: pointer;
-                      display: flex;
-                      align-items: center;
-                      gap: 0.75rem;
-                      transition: all 0.2s ease;
-                      font-size: 0.95rem;
-                      font-weight: 500;
-                      color: var(--foreground);
-                      border-left: 3px solid transparent;
-                    }
-
-                    .PhoneInputCountryOption:hover {
-                      background-color: rgba(0, 0, 0, 0.04);
-                      border-left-color: var(--primary);
-                      padding-left: 1.25rem;
-                    }
-
-                    .PhoneInputCountryOption.selected {
-                      background: linear-gradient(90deg, var(--primary)/0.15 0%, transparent 100%);
-                      border-left-color: var(--primary);
-                      color: var(--primary);
-                      font-weight: 600;
-                      padding-left: 1.25rem;
-                    }
                   `}</style>
                   <PhoneInput
                     international
-                    countryCallingCodeEditable={false}
                     defaultCountry="RS"
                     value={phoneValue}
                     onChange={handlePhoneChange}
-                    countries={["RS", "BA", "ME", "HR", "SI", "MK", "XK", "AL", "GR"]}
                     placeholder="Unesite broj telefona"
                     className={`PhoneInput ${phoneError ? "error" : ""}`}
                     numberInputProps={{
                       className: "PhoneInputNumber",
-                    }}
-                    countrySelectProps={{
-                      className: "PhoneInputCountrySelect",
                     }}
                   />
                   {phoneError && <p className="text-red-500 text-sm mt-1.5 font-medium">{phoneError}</p>}
