@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.png";
 
 const links = [
   { to: "/", label: "Početna" },
@@ -29,14 +30,8 @@ export const Navbar = () => {
     <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "py-3" : "py-5"}`}>
       <div className={`mx-auto max-w-7xl px-5 lg:px-8 transition-all duration-500 ${scrolled ? "glass rounded-2xl" : ""}`}>
         <div className="flex items-center justify-between h-14">
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="h-9 w-9 rounded-full bg-gradient-primary shadow-glow flex items-center justify-center">
-              <span className="font-serif text-primary-foreground text-lg italic">B</span>
-            </div>
-            <div className="leading-tight">
-              <div className="font-serif text-xl tracking-wide">Sala Borović</div>
-              <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Bogatić</div>
-            </div>
+          <Link to="/" className="flex items-center group" aria-label="Sala Borović — početna">
+            <img src={logo} alt="Svečana sala Borović" className="h-12 lg:h-14 w-auto object-contain" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-9">
