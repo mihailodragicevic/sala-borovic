@@ -2,8 +2,8 @@ import { Layout } from "@/components/site/Layout";
 import { PageHeader } from "@/components/site/PageHeader";
 import { About } from "@/components/site/About";
 import { Benefits } from "@/components/site/Benefits";
-import { Testimonials } from "@/components/site/Testimonials";
-import { CtaBanner } from "@/components/site/CtaBanner";
+import { OurStory } from "@/components/site/OurStory";
+import { OurValues } from "@/components/site/OurValues";
 
 const AboutPage = () => (
   <Layout>
@@ -14,8 +14,8 @@ const AboutPage = () => (
     />
     <About />
     <Benefits />
-    <Testimonials />
-    <CtaBanner />
+    <OurStory />
+    <OurValues />
   </Layout>
 );
 
