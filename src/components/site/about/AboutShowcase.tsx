@@ -1,34 +1,78 @@
 import { useEffect, useRef } from "react";
 import showcaseVideo from "@/assets/SnapInsta.to_AQMgOUWlXrHWoQPk0fCcm_EN2yG8OCJbAJWkMnUWfyJoJZceq8IrmbwNyJ48JMLIsGrjttwDm8NIF2XKuq5r5j6QxdVUzfhe3u7SE1E.mp4";
+import showcasePoster from "@/assets/about-venue.jpg";
 
 export const AboutShowcase = () => {
-  const ref = useRef<HTMLDivElement>(null);
+  const mediaRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      const offset = (rect.top - window.innerHeight / 2) * -0.15;
-      ref.current.style.transform = `translate3d(0, ${offset}px, 0) scale(1.15)`;
+    const mediaElement = mediaRef.current;
+    const videoElement = videoRef.current;
+
+    if (!mediaElement || !videoElement) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+    let frameId = 0;
+    let ticking = false;
+
+    const applyTransform = () => {
+      ticking = false;
+      const rect = mediaElement.getBoundingClientRect();
+      const offset = prefersReducedMotion || !isDesktop ? 0 : (rect.top - window.innerHeight / 2) * -0.08;
+      mediaElement.style.transform = `translate3d(0, ${offset}px, 0) scale(1.08)`;
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      frameId = window.requestAnimationFrame(applyTransform);
+    };
 
-    return () => window.removeEventListener("scroll", onScroll);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!videoElement) return;
+
+        if (entry.isIntersecting) {
+          const playPromise = videoElement.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(() => {});
+          }
+        } else {
+          videoElement.pause();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(videoElement);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    applyTransform();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   return (
     <section className="relative h-[90vh] min-h-[600px] overflow-hidden">
-      <div ref={ref} className="absolute inset-0 will-change-transform">
+      <div ref={mediaRef} className="absolute inset-0 will-change-transform">
         <video
+          ref={videoRef}
           src={showcaseVideo}
+          poster={showcasePoster}
           className="h-full w-full object-cover"
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-label="Video prikaz atmosfere sale Borovic"
         />
         <div

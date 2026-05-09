@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Phone, Menu, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 const links = [
   { to: "/", label: "Početna" },
@@ -24,54 +25,56 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled ? "py-3" : "py-5"}`}>
-      <div className={`mx-auto max-w-7xl px-5 lg:px-8 transition-all duration-500 ${scrolled ? "glass rounded-2xl" : ""}`}>
-        <div className="flex items-center justify-between h-14">
-          <Link to="/" className="flex items-center group" aria-label="Sala Borović — početna">
-            <img src={logo} alt="Svečana sala Borović" className="h-12 lg:h-14 w-auto object-contain" />
+    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "py-3" : "py-5"}`}>
+      <div className={`mx-auto max-w-7xl px-5 transition-all duration-500 lg:px-8 ${scrolled ? "glass rounded-2xl" : ""}`}>
+        <div className="flex h-14 items-center justify-between">
+          <Link to="/" className="group flex items-center" aria-label="Sala Borović - početna">
+            <img src={logo} alt="Svećana sala Borović" className="h-12 w-auto object-contain lg:h-14" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-9">
-            {links.map((l) => (
+          <nav className="hidden items-center gap-9 lg:flex">
+            {links.map((link) => (
               <NavLink
-                key={l.to}
-                to={l.to}
-                end={l.to === "/"}
+                key={link.to}
+                to={link.to}
+                end={link.to === "/"}
                 className={({ isActive }) =>
-                  `text-sm transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-px after:bg-gradient-primary after:transition-all hover:after:w-full ${
-                    isActive ? "text-foreground after:w-full" : "text-foreground/70 hover:text-foreground after:w-0"
+                  `relative text-sm transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:bg-gradient-primary after:transition-all hover:after:w-full ${
+                    isActive ? "text-foreground after:w-full" : "text-foreground/70 after:w-0 hover:text-foreground"
                   }`
                 }
               >
-                {l.label}
+                {link.label}
               </NavLink>
             ))}
           </nav>
 
           <div className="hidden lg:block">
             <Button asChild variant="hero" size="lg">
-              <a href="tel:+381641234567"><Phone className="h-4 w-4" /> Pozovite nas</a>
+              <a href={PRIMARY_PHONE_HREF}><Phone className="h-4 w-4" /> Pozovite nas</a>
             </Button>
           </div>
 
-          <button className="lg:hidden text-foreground p-2" onClick={() => setOpen(!open)} aria-label="Meni">
+          <button className="p-2 text-foreground lg:hidden" onClick={() => setOpen(!open)} aria-label="Meni">
             {open ? <X /> : <Menu />}
           </button>
         </div>
 
         {open && (
-          <div className="lg:hidden pb-6 pt-2 animate-fade-in">
+          <div className="animate-fade-in pb-6 pt-2 lg:hidden">
             <nav className="flex flex-col gap-4">
-              {links.map((l) => (
-                <NavLink key={l.to} to={l.to} end={l.to === "/"} className="text-foreground/90 py-2 border-b border-border/40">
-                  {l.label}
+              {links.map((link) => (
+                <NavLink key={link.to} to={link.to} end={link.to === "/"} className="border-b border-border/40 py-2 text-foreground/90">
+                  {link.label}
                 </NavLink>
               ))}
               <Button asChild variant="hero" className="mt-2">
-                <a href="tel:+381641234567"><Phone className="h-4 w-4" /> Pozovite nas</a>
+                <a href={PRIMARY_PHONE_HREF}><Phone className="h-4 w-4" /> Pozovite nas</a>
               </Button>
             </nav>
           </div>

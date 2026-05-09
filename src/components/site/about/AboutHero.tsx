@@ -36,7 +36,7 @@ export const AboutHero = () => {
           <span className="text-gradient italic">trenutak</span> postaje uspomena.
         </h1>
         <p className="mt-8 text-lg lg:text-xl text-foreground/80 max-w-2xl mx-auto font-light leading-relaxed animate-fade-in" style={{ animationDelay: "0.3s" }}>
-          Elegantan ambijent kreiran za proslave koje se pamte — u srcu Mačve.
+          Elegantan ambijent kreiran za proslave koje se pamte u srcu Mačve.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center animate-fade-in" style={{ animationDelay: "0.45s" }}>
           <Button asChild variant="hero" size="xl" className="animate-pulse-glow">

@@ -3,7 +3,7 @@ import img2 from "@/assets/IMG-a2a9ecad222a1bfe0c3fd5aebdf19027-V.jpg";
 import img3 from "@/assets/IMG-5280ba7bdb44931fb0ef620aee002067-V.jpg";
 
 const blocks = [
-  { img: img1, title: "Elegantan ambijent", text: "Prostor koji odiše rafinmanom — visoki plafoni, raskošno svetlo i pažljivo komponovani detalji." },
+  { img: img1, title: "Elegantan ambijent", text: "Prostor koji odiše rafinmanom - visoki plafoni, raskošno svetlo i pažljivo komponovani detalji." },
   { img: img2, title: "Proslave za pamćenje", text: "Atmosfera u kojoj se vreme zaustavlja, a uspomene rastu sa svakim trenutkom." },
   { img: img3, title: "Utisak koji ostaje", text: "Topao doček, profesionalna posluga i osećaj kao da ste jedini gosti te večeri." },
 ];
@@ -12,9 +12,9 @@ export const AboutAtmosphere = () => (
   <section className="relative py-32 lg:py-44 overflow-hidden">
     <div className="mx-auto max-w-7xl px-5 lg:px-8">
       <div className="reveal-up max-w-3xl mb-20 lg:mb-28">
-        <div className="text-xs tracking-[0.4em] uppercase text-primary/90 mb-5">— Doživljaj —</div>
+        <div className="text-xs tracking-[0.4em] uppercase text-primary/90 mb-5">- Doživljaj -</div>
         <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-[1.05]">
-          Atmosfera koja se <span className="text-gradient italic">oseti</span> pre nego što se izgovori.
+          Atmosfera koja se <span className="text-gradient italic">oseti </span> pre nego što se izgovori.
         </h2>
       </div>
 

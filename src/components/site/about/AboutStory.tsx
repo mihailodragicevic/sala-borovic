@@ -23,18 +23,18 @@ export const AboutStory = () => (
           </h2>
           <div className="mt-8 space-y-6 text-foreground/75 text-lg font-light leading-[1.85]">
             <p>
-              Postoje trenuci koji obeleže ceo život — prvi ples mladenaca, osmesi roditelja, smeh prijatelja koji se prelivaju kroz noć.
+              Postoje trenuci koji obeleže ceo život, prvi ples mladenaca, osmesi roditelja, smeh prijatelja koji se prelivaju kroz noć.
             </p>
             <p>
               U Sali Borović smo posvećeni jednoj jedinoj stvari: da ti trenuci budu okupani svetlošću, toplinom i elegancijom kakvu zaslužuju.
             </p>
             <p className="text-foreground/60 italic font-serif text-xl">
-              Svaki detalj — od svetla lustera do poslednjeg cveta na stolu — pažljivo je odabran da bi vaše slavlje izgledalo onako kako ste ga uvek zamišljali.
+              Svaki detalj, od svetla lustera do poslednjeg cveta na stolu, pažljivo je odabran da bi vaše slavlje izgledalo onako kako ste ga uvek zamišljali.
             </p>
           </div>
           <div className="mt-12 flex items-center gap-6">
             <div className="h-px flex-1 bg-gradient-to-r from-primary/60 to-transparent" />
-            <div className="text-xs tracking-[0.35em] uppercase text-muted-foreground">Bogatić · Mačva</div>
+            <div className="text-xs tracking-[0.35em] uppercase text-muted-foreground">Bogatić</div>
           </div>
         </div>
       </div>

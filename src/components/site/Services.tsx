@@ -9,8 +9,11 @@ const services = [
 ];
 
 export const Services = () => (
-  <section id="ponude" className="relative py-28 lg:py-36">
-    <div className="absolute top-0 left-0 w-1/3 h-full opacity-30" style={{ background: "var(--gradient-radial)" }} />
+  <section id="ponude" className="relative overflow-hidden py-28 lg:py-36">
+    <div
+      className="absolute -left-[20%] top-1/2 h-[92%] w-[46%] -translate-y-1/2 opacity-55"
+      style={{ background: "radial-gradient(circle at left center, hsl(290 82% 58% / 0.5), transparent 64%)" }}
+    />
     <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
       <SectionHeading
         eyebrow="Ponude"

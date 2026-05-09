@@ -4,24 +4,7 @@ import { PageHeader } from "@/components/site/PageHeader";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import g5 from "@/assets/about-venue.jpg";
-import hero from "@/assets/hero-venue.jpg";
-
-const imgs = [
-  { src: hero, alt: "Glavna sala", span: "lg:col-span-2 lg:row-span-2" },
-  { src: g1, alt: "Dekoracija stola" },
-  { src: g2, alt: "Pogled na luster" },
-  { src: g4, alt: "Mladenci" },
-  { src: g3, alt: "Rođendanska torta" },
-  { src: g5, alt: "Detalj enterijera" },
-  { src: g2, alt: "Sala iz vazduha", span: "lg:col-span-2" },
-  { src: g1, alt: "Cveće na stolu" },
-  { src: g4, alt: "Prvi ples" },
-];
+import { galleryImages } from "@/lib/galleryImages";
 
 const GalleryPage = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -39,12 +22,12 @@ const GalleryPage = () => {
 
   const showPrevious = () => {
     if (selectedIndex === null) return;
-    setSelectedIndex((selectedIndex + imgs.length - 1) % imgs.length);
+    setSelectedIndex((selectedIndex + galleryImages.length - 1) % galleryImages.length);
   };
 
   const showNext = () => {
     if (selectedIndex === null) return;
-    setSelectedIndex((selectedIndex + 1) % imgs.length);
+    setSelectedIndex((selectedIndex + 1) % galleryImages.length);
   };
 
   useEffect(() => {
@@ -75,33 +58,45 @@ const GalleryPage = () => {
       />
       <section className="pb-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-[220px] lg:auto-rows-[260px] gap-4">
-            {imgs.map((im, i) => (
-              <div
-                key={i}
-                className={`reveal-up relative overflow-hidden rounded-2xl group cursor-pointer ${im.span ?? ""}`}
-                style={{ transitionDelay: `${i * 50}ms` }}
-                onClick={() => openModal(i)}
-              >
-                <img src={im.src} alt={im.alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-70 group-hover:opacity-50 transition-opacity duration-500" />
-                <div className="absolute bottom-4 left-5 right-5 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <div className="text-xs tracking-widest uppercase text-primary">Sala Borović</div>
-                  <div className="font-serif text-xl">{im.alt}</div>
+          <div className="grid auto-rows-[220px] grid-cols-2 gap-4 lg:auto-rows-[260px] lg:grid-cols-4">
+            {galleryImages.map((image, index) => {
+              const span =
+                index === 0 ? "lg:col-span-2 lg:row-span-2" :
+                index % 7 === 0 ? "lg:col-span-2" :
+                "";
+
+              return (
+                <div
+                  key={image.key}
+                  className={`reveal-up group relative overflow-hidden rounded-2xl cursor-pointer ${span}`}
+                  style={{ transitionDelay: `${index * 35}ms` }}
+                  onClick={() => openModal(index)}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-50" />
+                  <div className="absolute bottom-4 left-5 right-5 translate-y-2 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <div className="text-xs uppercase tracking-widest text-primary">Sala Borović</div>
+                    <div className="font-serif text-xl">{image.alt}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="fixed inset-0 z-50 m-0 flex items-center justify-center bg-black/95 p-0 border-none shadow-none translate-x-0 translate-y-0 max-w-none max-h-none">
+        <DialogContent className="fixed inset-0 z-50 m-0 flex max-h-none max-w-none translate-x-0 translate-y-0 items-center justify-center border-none bg-black/95 p-0 shadow-none">
           {selectedIndex !== null && (
-            <div className="relative w-full h-full max-h-screen max-w-[90vw] flex items-center justify-center">
+            <div className="relative flex h-full max-h-screen w-full max-w-[90vw] items-center justify-center">
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-50 rounded-full bg-black/60 p-3 text-white hover:bg-black/80 transition-colors"
+                className="absolute top-4 right-4 z-50 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black/80"
                 aria-label="Zatvori"
               >
                 <X className="h-6 w-6" />
@@ -109,7 +104,7 @@ const GalleryPage = () => {
 
               <button
                 onClick={showPrevious}
-                className="absolute left-4 top-1/2 z-50 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white hover:bg-black/80 transition-colors"
+                className="absolute top-1/2 left-4 z-50 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black/80"
                 aria-label="Prethodna slika"
               >
                 <ChevronLeft className="h-6 w-6" />
@@ -117,20 +112,20 @@ const GalleryPage = () => {
 
               <button
                 onClick={showNext}
-                className="absolute right-4 top-1/2 z-50 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white hover:bg-black/80 transition-colors"
+                className="absolute top-1/2 right-4 z-50 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black/80"
                 aria-label="Sledeća slika"
               >
                 <ChevronRight className="h-6 w-6" />
               </button>
 
               <img
-                src={imgs[selectedIndex].src}
-                alt={imgs[selectedIndex].alt}
+                src={galleryImages[selectedIndex].src}
+                alt={galleryImages[selectedIndex].alt}
                 className="max-h-[90vh] max-w-full object-contain"
               />
 
               <div className="pointer-events-none absolute bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm text-white">
-                {selectedIndex + 1} / {imgs.length}
+                {selectedIndex + 1} / {galleryImages.length}
               </div>
             </div>
           )}
