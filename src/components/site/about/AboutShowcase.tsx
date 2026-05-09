@@ -1,16 +1,38 @@
-import { useEffect, useRef } from "react";
-import showcaseVideo from "@/assets/SnapInsta.to_AQMgOUWlXrHWoQPk0fCcm_EN2yG8OCJbAJWkMnUWfyJoJZceq8IrmbwNyJ48JMLIsGrjttwDm8NIF2XKuq5r5j6QxdVUzfhe3u7SE1E.mp4";
-import showcasePoster from "@/assets/about-venue.jpg";
+import { useEffect, useRef, useState } from "react";
+import showcaseVideo from "@/assets/Video o nama.mp4";
+import showcasePoster from "@/assets/about-venue.webp";
 
 export const AboutShowcase = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+  useEffect(() => {
+    const sectionElement = sectionRef.current;
+    if (!sectionElement) return;
+
+    const preloadObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldLoadVideo(true);
+        preloadObserver.disconnect();
+      },
+      { rootMargin: "320px 0px" }
+    );
+
+    preloadObserver.observe(sectionElement);
+
+    return () => {
+      preloadObserver.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const mediaElement = mediaRef.current;
     const videoElement = videoRef.current;
 
-    if (!mediaElement || !videoElement) return;
+    if (!mediaElement) return;
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
@@ -31,48 +53,51 @@ export const AboutShowcase = () => {
       frameId = window.requestAnimationFrame(applyTransform);
     };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!videoElement) return;
+    let observer: IntersectionObserver | null = null;
 
-        if (entry.isIntersecting) {
-          const playPromise = videoElement.play();
-          if (playPromise && typeof playPromise.catch === "function") {
-            playPromise.catch(() => {});
+    if (videoElement) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            const playPromise = videoElement.play();
+            if (playPromise && typeof playPromise.catch === "function") {
+              playPromise.catch(() => {});
+            }
+          } else {
+            videoElement.pause();
           }
-        } else {
-          videoElement.pause();
-        }
-      },
-      { threshold: 0.2 }
-    );
+        },
+        { threshold: 0.2 }
+      );
 
-    observer.observe(videoElement);
+      observer.observe(videoElement);
+    }
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     applyTransform();
 
     return () => {
-      observer.disconnect();
+      observer?.disconnect();
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       window.cancelAnimationFrame(frameId);
     };
-  }, []);
+  }, [shouldLoadVideo]);
 
   return (
-    <section className="relative h-[90vh] min-h-[600px] overflow-hidden">
+    <section ref={sectionRef} className="relative h-[90vh] min-h-[600px] overflow-hidden">
       <div ref={mediaRef} className="absolute inset-0 will-change-transform">
         <video
           ref={videoRef}
-          src={showcaseVideo}
+          src={shouldLoadVideo ? showcaseVideo : undefined}
           poster={showcasePoster}
           className="h-full w-full object-cover"
-          autoPlay
+          autoPlay={shouldLoadVideo}
           muted
           loop
           playsInline
-          preload="none"
+          preload={shouldLoadVideo ? "metadata" : "none"}
           aria-label="Video prikaz atmosfere sale Borovic"
         />
         <div

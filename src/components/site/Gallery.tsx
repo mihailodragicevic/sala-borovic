@@ -73,7 +73,7 @@ export const Gallery = () => {
             return (
               <div
                 key={image.key}
-                className={`reveal-up group relative overflow-hidden rounded-2xl cursor-pointer ${image.span}`}
+                className={`reveal-up group relative cursor-pointer overflow-hidden rounded-2xl ${image.span}`}
                 style={{ transitionDelay: `${index * 60}ms` }}
                 onClick={() => openModal(modalIndex)}
               >
@@ -84,19 +84,15 @@ export const Gallery = () => {
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-50" />
-                <div className="absolute bottom-4 left-5 right-5 translate-y-2 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                  <div className="text-xs uppercase tracking-widest text-primary">Sala Borović</div>
-                  <div className="font-serif text-xl text-foreground">{image.alt}</div>
-                </div>
               </div>
             );
           })}
         </div>
 
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-          <DialogContent className="h-full max-h-[90vh] w-full max-w-4xl border-none bg-black/95 p-0">
+          <DialogContent className="fixed inset-0 z-50 m-0 flex max-h-none max-w-none translate-x-0 translate-y-0 items-center justify-center border-none bg-black/95 p-0 shadow-none">
             {selectedImageIndex !== null && (
-              <div className="relative flex h-full w-full items-center justify-center">
+              <div className="relative flex h-full w-full items-center justify-center px-4 py-8 sm:px-8">
                 <button
                   onClick={closeModal}
                   className="absolute top-4 right-4 z-50 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
@@ -118,11 +114,13 @@ export const Gallery = () => {
                   <ChevronRight className="h-6 w-6" />
                 </button>
 
-                <img
-                  src={galleryImages[selectedImageIndex].src}
-                  alt={galleryImages[selectedImageIndex].alt}
-                  className="max-h-full max-w-full object-contain"
-                />
+                <div className="flex h-[78vh] w-full max-w-[1200px] items-center justify-center">
+                  <img
+                    src={galleryImages[selectedImageIndex].src}
+                    alt={galleryImages[selectedImageIndex].alt}
+                    className="h-full w-auto max-w-full rounded-2xl object-contain"
+                  />
+                </div>
 
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-lg bg-black/70 px-4 py-2 text-white">
                   {selectedImageIndex + 1} / {galleryImages.length}

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, Image as ImageIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import hero from "@/assets/IMG-340b99f7a5045fc1637113fbf0429944-V.jpg";
+import hero from "@/assets/Unutrašnjost sale.webp";
 
 export const AboutHero = () => {
   const ref = useRef<HTMLDivElement>(null);

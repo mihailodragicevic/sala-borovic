@@ -1,8 +1,8 @@
-import d1 from "@/assets/IMG-132977e56b050c15374d951d15af7455-V.jpg";
-import d2 from "@/assets/IMG-17731db35fd770e07be242b35d62e46c-V.jpg";
-import d3 from "@/assets/IMG-2d9418e2de076d26230a2249fe05d4f1-V.jpg";
-import d4 from "@/assets/IMG-5371a154b7d358f2bfdb316b2a71af01-V.jpg";
-import d5 from "@/assets/IMG-552574492d4dec6bdac609e49caad226-V.jpg";
+import d1 from "@/assets/Ulaz u salu.webp";
+import d2 from "@/assets/Natpis dobrodošlice.webp";
+import d3 from "@/assets/Predjelo.webp";
+import d4 from "@/assets/Mladenački sto (bela dekoracija).webp";
+import d5 from "@/assets/Zelena dekoracija mladenačkog stola.webp";
 
 export const AboutDetails = () => (
   <section className="relative py-32 lg:py-44 overflow-hidden">

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
-import about from "@/assets/about-venue.jpg";
+import about from "@/assets/about-venue.webp";
 import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 export const About = () => (

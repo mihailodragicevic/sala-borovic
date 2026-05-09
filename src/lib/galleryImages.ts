@@ -4,32 +4,32 @@ type GalleryImage = {
   key: string;
 };
 
-const imageModules = import.meta.glob("../assets/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}", {
+const imageModules = import.meta.glob("../assets/*.{png,webp,PNG,WEBP}", {
   eager: true,
   import: "default",
 }) as Record<string, string>;
 
-const EXCLUDED_FILES = new Set(["logo.png"]);
+const EXCLUDED_FILES = new Set(["logo.png", "gallery-4.webp"]);
 
 const preferredOrder = [
-  "gallery-2.jpg",
-  "gallery-1.jpg",
-  "gallery-4.jpg",
-  "gallery-3.jpg",
-  "about-venue.jpg",
-  "hero-venue.jpg",
+  "gallery-2.webp",
+  "gallery-1.webp",
+  "Mladenci.webp",
+  "gallery-3.webp",
+  "about-venue.webp",
+  "hero-venue.webp",
 ];
 
 const preferredAltMap: Record<string, string> = {
-  "gallery-1.jpg": "Elegantna dekoracija stola",
-  "gallery-2.jpg": "Velika svečana sala",
-  "gallery-3.jpg": "Rođendanska proslava",
-  "gallery-4.jpg": "Mladenci na svadbi",
-  "about-venue.jpg": "Detalj enterijera sale",
-  "hero-venue.jpg": "Hero slika sale",
-  "img1.jpg": "Galerija slika 1",
-  "slika1.jpg": "Slika 1",
-  "slika2.jpg": "Slika 2",
+  "gallery-1.webp": "Elegantna dekoracija stola",
+  "gallery-2.webp": "Velika svečana sala",
+  "gallery-3.webp": "Rođendanska proslava",
+  "Mladenci.webp": "Mladenci na svadbi",
+  "about-venue.webp": "Detalj enterijera sale",
+  "hero-venue.webp": "Hero slika sale",
+  "img1.webp": "Galerija slika 1",
+  "slika1.webp": "Slika 1",
+  "slika2.webp": "Slika 2",
 };
 
 const filenameFromPath = (path: string) => path.split("/").pop() ?? path;
@@ -74,15 +74,15 @@ Object.entries(imageModules)
 export const galleryImages = Array.from(uniqueImages.values());
 
 const featuredFilenames = [
-  "gallery-2.jpg",
-  "gallery-1.jpg",
-  "gallery-4.jpg",
-  "gallery-3.jpg",
-  "about-venue.jpg",
+  "gallery-2.webp",
+  "gallery-1.webp",
+  "Mladenci.webp",
+  "gallery-3.webp",
+  "about-venue.webp",
 ];
 
 const spanMap: Record<string, string> = {
-  "gallery-2.jpg": "lg:col-span-2 lg:row-span-2",
+  "gallery-2.webp": "lg:col-span-2 lg:row-span-2",
 };
 
 export const featuredGalleryImages = featuredFilenames

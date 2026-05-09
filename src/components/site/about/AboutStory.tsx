@@ -1,4 +1,4 @@
-import storyImg from "@/assets/IMG-5851de2bd2d195576e062d4150c18796-V.jpg";
+import storyImg from "@/assets/Mladenci.webp";
 
 export const AboutStory = () => (
   <section className="relative py-32 lg:py-48 overflow-hidden">

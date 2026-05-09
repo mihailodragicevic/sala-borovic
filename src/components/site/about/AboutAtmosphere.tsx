@@ -1,6 +1,6 @@
-import img1 from "@/assets/IMG-461bbb1b7436d27ddff6b6e28fdee244-V.jpg";
-import img2 from "@/assets/IMG-a2a9ecad222a1bfe0c3fd5aebdf19027-V.jpg";
-import img3 from "@/assets/IMG-5280ba7bdb44931fb0ef620aee002067-V.jpg";
+import img1 from "@/assets/Prvi deo sale.webp";
+import img2 from "@/assets/Dekoracija.webp";
+import img3 from "@/assets/Slatki sto.webp";
 
 const blocks = [
   { img: img1, title: "Elegantan ambijent", text: "Prostor koji odiše rafinmanom - visoki plafoni, raskošno svetlo i pažljivo komponovani detalji." },

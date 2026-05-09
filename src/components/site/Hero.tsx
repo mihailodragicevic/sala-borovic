@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { MessageCircle, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/hero-venue.jpg";
+import heroImg from "@/assets/hero-venue.webp";
 import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 export const Hero = () => {
@@ -55,7 +55,7 @@ export const Hero = () => {
           </div>
 
           <h1 className="font-serif text-5xl leading-[1.02] tracking-tight animate-fade-in sm:text-6xl lg:text-8xl" style={{ animationDelay: "0.1s" }}>
-            Svećana sala <br />
+            Svečana sala<br />
             <span className="text-gradient italic">Borović</span>
           </h1>
 
