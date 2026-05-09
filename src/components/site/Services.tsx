@@ -15,7 +15,7 @@ export const Services = () => (
       <SectionHeading
         eyebrow="Ponude"
         title={<>Događaji koje organizujemo <span className="text-gradient italic">za vas</span></>}
-        subtitle="Bez obzira na povod — kreiramo iskustvo prilagođeno vašoj viziji, ukusu i broju gostiju."
+        subtitle="Bez obzira na povod, kreiramo iskustvo prilagođeno vašoj viziji, ukusu i broju gostiju."
         center
       />
 
