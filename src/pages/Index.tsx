@@ -6,9 +6,98 @@ import { About } from "@/components/site/About";
 import { Services } from "@/components/site/Services";
 import { Testimonials } from "@/components/site/Testimonials";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import { Seo } from "@/components/site/Seo";
+import { CONTACT_MAPS_HREF, FACEBOOK_HREF, INSTAGRAM_HREF } from "@/lib/contact";
+import { DEFAULT_OG_IMAGE, SITE_LOGO, SITE_URL } from "@/lib/seo";
+import heroImg from "@/assets/hero-venue.webp";
+
+const seoSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Svečana sala Borović Bogatić",
+    url: SITE_URL,
+    inLanguage: "sr-RS",
+    publisher: {
+      "@type": "Organization",
+      name: "Svečana sala Borović",
+      logo: {
+        "@type": "ImageObject",
+        url: SITE_LOGO,
+      },
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Svečana sala Borović",
+    url: SITE_URL,
+    image: DEFAULT_OG_IMAGE,
+    logo: {
+      "@type": "ImageObject",
+      url: SITE_LOGO,
+    },
+    sameAs: [
+      INSTAGRAM_HREF,
+      FACEBOOK_HREF,
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    additionalType: "https://schema.org/EventVenue",
+    name: "Svečana sala Borović Bogatić",
+    url: SITE_URL,
+    image: DEFAULT_OG_IMAGE,
+    logo: SITE_LOGO,
+    telephone: "+381644820780",
+    email: "info@salaborovic.rs",
+    hasMap: CONTACT_MAPS_HREF,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Pavla Orlovića 51",
+      addressLocality: "Bogatić",
+      addressCountry: "RS",
+    },
+    priceRange: "$$",
+    description:
+      "Svečana sala Bogatić za svadbe, rođendane i proslave u elegantnom ambijentu.",
+    areaServed: {
+      "@type": "Place",
+      name: "Bogatić i Mačva",
+    },
+    sameAs: [
+      INSTAGRAM_HREF,
+      FACEBOOK_HREF,
+    ],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+381644820780",
+        contactType: "customer service",
+        areaServed: "RS",
+        availableLanguage: ["sr"],
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: "+381643877773",
+        contactType: "customer service",
+        areaServed: "RS",
+        availableLanguage: ["sr"],
+      },
+    ],
+  },
+];
 
 const Index = () => (
   <Layout>
+    <Seo
+      title="Svečana sala Borović Bogatić | Sala za svadbe i proslave"
+      description="Svečana sala Bogatić za svadbe, rođendane i proslave do 450 gostiju. Elegantna sala za svadbe Bogatić sa organizacijom, dekoracijom i rezervacijama."
+      pathname="/"
+      preloadImages={[heroImg]}
+      schema={seoSchema}
+    />
     <Hero />
     <Benefits />
     <Gallery />

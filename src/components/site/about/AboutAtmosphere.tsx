@@ -23,7 +23,14 @@ export const AboutAtmosphere = () => (
           <div key={b.title} className={`reveal-up grid lg:grid-cols-12 gap-10 lg:gap-16 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
             <div className="lg:col-span-7 group">
               <div className="relative overflow-hidden rounded-3xl shadow-elegant aspect-[4/3]">
-                <img src={b.img} alt={b.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-110" />
+                <img
+                  src={b.img}
+                  alt={b.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform ease-out group-hover:scale-110"
+                  style={{ transitionDuration: "1400ms" }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
               </div>
             </div>

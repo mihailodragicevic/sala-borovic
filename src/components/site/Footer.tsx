@@ -13,12 +13,12 @@ import {
 } from "@/lib/contact";
 
 export const Footer = () => (
-  <footer className="relative border-t border-border/60 pt-20 pb-10">
+  <footer className="relative border-t border-border/60 pb-10 pt-20">
     <div className="mx-auto max-w-7xl px-5 lg:px-8">
       <div className="grid gap-10 md:grid-cols-5">
         <div className="md:col-span-2">
           <Link to="/" aria-label="Sala Borović - početna" className="inline-block">
-            <img src={logo} alt="Svećana sala Borović" className="h-16 w-auto object-contain" />
+            <img src={logo} alt="Svečana sala Borović" width="201" height="64" decoding="async" className="h-16 w-auto object-contain" />
           </Link>
           <div className="mt-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Bogatić · Mačva</div>
           <p className="mt-5 max-w-md font-light leading-relaxed text-foreground/70">
@@ -69,7 +69,7 @@ export const Footer = () => (
         </div>
       </div>
       <div className="mt-14 flex flex-col justify-between gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row">
-        <div>© {new Date().getFullYear()} Svećana sala Borović. Sva prava zadržana.</div>
+        <div>© {new Date().getFullYear()} Svečana sala Borović. Sva prava zadržana.</div>
         <Link
           to="/politika-privatnosti"
           className="relative inline-flex w-fit transition-colors hover:text-primary after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gradient-primary after:transition-all hover:after:w-full"

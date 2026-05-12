@@ -1,5 +1,6 @@
 import { Layout } from "@/components/site/Layout";
 import { PageHeader } from "@/components/site/PageHeader";
+import { Seo } from "@/components/site/Seo";
 import {
   CONTACT_ADDRESS,
   CONTACT_EMAIL,
@@ -78,6 +79,11 @@ const sections = [
 
 const PrivacyPolicyPage = () => (
   <Layout>
+    <Seo
+      title="Politika privatnosti | Svečana sala Borović Bogatić"
+      description="Pročitajte politiku privatnosti sajta Svečane sale Borović u Bogatiću i saznajte kako obrađujemo kontakt podatke, upite i informacije sa sajta."
+      pathname="/politika-privatnosti"
+    />
     <PageHeader
       eyebrow="Politika privatnosti"
       title={<>Vaši podaci i <span className="text-gradient italic">vaša privatnost</span></>}

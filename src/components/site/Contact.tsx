@@ -23,8 +23,8 @@ import {
 } from "@/lib/contact";
 
 const schema = z.object({
-  name: z.string().trim().min(2, "Unesite vaše ime").max(80),
-  email: z.string().trim().email("Unesite ispravan email"),
+  name: z.string().trim().min(2, "Unesite vaš email").max(80),
+  email: z.union([z.literal(""), z.string().trim().email("Unesite ispravan email")]),
 });
 
 const contactCards = [
@@ -65,11 +65,19 @@ export const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneValue, setPhoneValue] = useState<string | undefined>(undefined);
+  const [nameError, setNameError] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
 
   const handlePhoneChange = (value: string | undefined) => {
     setPhoneValue(value);
-    if (value && !isValidPhoneNumber(value)) {
+
+    if (!value) {
+      setPhoneError("");
+      return;
+    }
+
+    if (!isValidPhoneNumber(value)) {
       setPhoneError("Broj nije ispravan");
     } else {
       setPhoneError("");
@@ -79,22 +87,45 @@ export const Contact = () => {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!phoneValue || !isValidPhoneNumber(phoneValue)) {
+    const trimmedName = name.trim();
+    const trimmedEmail = email.trim();
+    let hasError = false;
+
+    if (!trimmedName) {
+      setNameError("Ovo polje je obavezno");
+      hasError = true;
+    } else {
+      setNameError("");
+    }
+
+    if (!phoneValue) {
+      setPhoneError("Ovo polje je obavezno");
+      hasError = true;
+    } else if (!isValidPhoneNumber(phoneValue)) {
       setPhoneError("Broj nije ispravan");
-      toast.error("Unesite ispravan broj telefona");
-      return;
+      hasError = true;
+    } else {
+      setPhoneError("");
     }
 
-    const result = schema.safeParse({ name, email });
+    const result = schema.safeParse({ name: trimmedName, email: trimmedEmail });
     if (!result.success) {
-      toast.error(result.error.issues[0].message);
+      setEmailError(result.error.issues[0].message);
+      hasError = true;
+    } else {
+      setEmailError("");
+    }
+
+    if (hasError) {
       return;
     }
 
-    toast.success("Hvala! Pozvaćemo vas u najkraćem roku.");
+    toast.success("Zahtev je uspesno poslat", { position: "top-center" });
     setName("");
     setEmail("");
-    setPhoneValue("+381");
+    setPhoneValue(undefined);
+    setNameError("");
+    setEmailError("");
     setPhoneError("");
   };
 
@@ -102,7 +133,7 @@ export const Contact = () => {
     <section id="kontakt" className="relative pb-28 lg:pb-36">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-5">
-          <div className="space-y-4 reveal-up lg:col-span-2">
+          <div className="reveal-up space-y-4 lg:col-span-2">
             {contactCards.map((card) => (
               <div
                 key={card.label}
@@ -124,11 +155,12 @@ export const Contact = () => {
                 </div>
               </div>
             ))}
+
             <div
               className="rounded-2xl border border-border/60 p-5 hover-lift hover:border-primary/60"
               style={{ background: "var(--gradient-card)" }}
             >
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">Društvene mreže</div>
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">Drustvene mreze</div>
               <div className="mt-4 flex items-center gap-3">
                 {socialLinks.map((social) => (
                   <a
@@ -151,25 +183,52 @@ export const Contact = () => {
               className="rounded-3xl border border-border/60 p-8 shadow-elegant lg:p-10"
               style={{ background: "var(--gradient-card)" }}
             >
-              <h3 className="font-serif text-3xl">Pošaljite zahtev za poziv</h3>
-              <p className="mt-2 text-foreground/70">Ostavite vaše ime i broj telefona - javljamo se u najkraćem roku.</p>
+              <h3 className="font-serif text-3xl">Posaljite zahtev za poziv</h3>
+              <p className="mt-2 text-foreground/70">Ostavite vase ime i broj telefona - javljamo se u najkracem roku.</p>
 
               <form onSubmit={submit} className="mt-8 space-y-4">
-                <Input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Ime i prezime"
-                  className="h-12 bg-background/40"
-                  maxLength={80}
-                />
-                <Input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  placeholder="example@gmail.com"
-                  className="h-12 bg-background/40"
-                />
-                <div>
+                <div className="space-y-2">
+                  <label htmlFor="contact-name" className="block text-sm font-medium text-foreground/88">
+                    Ime i prezime *
+                  </label>
+                  <Input
+                    id="contact-name"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                      if (e.target.value.trim()) {
+                        setNameError("");
+                      }
+                    }}
+                    placeholder="Unesite ime i prezime"
+                    className={`h-12 bg-background/40 ${nameError ? "border-red-500 focus-visible:ring-red-500/30" : ""}`}
+                    maxLength={80}
+                  />
+                  {nameError && <p className="text-sm font-medium text-red-500">{nameError}</p>}
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="contact-email" className="block text-sm font-medium text-foreground/88">
+                    Email
+                  </label>
+                  <Input
+                    id="contact-email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      setEmailError("");
+                    }}
+                    type="email"
+                    placeholder="npr. ime.prezime@gmail.com"
+                    className={`h-12 bg-background/40 ${emailError ? "border-red-500 focus-visible:ring-red-500/30" : ""}`}
+                  />
+                  {emailError && <p className="text-sm font-medium text-red-500">{emailError}</p>}
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="contact-phone" className="block text-sm font-medium text-foreground/88">
+                    Broj telefona *
+                  </label>
                   <style>{`
                     .PhoneInput {
                       display: flex;
@@ -196,7 +255,6 @@ export const Contact = () => {
 
                     .PhoneInputCountry {
                       position: relative;
-                      display: flex;
                       display: flex;
                       align-items: center;
                       align-self: stretch;
@@ -291,6 +349,7 @@ export const Contact = () => {
                     }
                   `}</style>
                   <PhoneInput
+                    id="contact-phone"
                     international
                     defaultCountry="RS"
                     value={phoneValue}
@@ -303,14 +362,15 @@ export const Contact = () => {
                   />
                   {phoneError && <p className="mt-1.5 text-sm font-medium text-red-500">{phoneError}</p>}
                 </div>
+
                 <Button type="submit" variant="hero" size="xl" className="w-full">
-                  Pošaljite zahtev
+                  Posaljite zahtev
                 </Button>
               </form>
 
               <div className="mt-8 aspect-[16/9] overflow-hidden rounded-2xl border border-border/60">
                 <iframe
-                  title="Lokacija Svećana sala Borović Bogatić"
+                  title="Lokacija Svecana sala Borovic Bogatic"
                   src={CONTACT_MAPS_EMBED}
                   className="h-full w-full grayscale-[40%] contrast-110"
                   loading="lazy"

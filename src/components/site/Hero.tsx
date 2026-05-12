@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { MessageCircle, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-venue.webp";
@@ -8,16 +9,37 @@ export const Hero = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onMove = (e: MouseEvent) => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (prefersReducedMotion || !supportsHover) {
+      return;
+    }
+
+    let frameId = 0;
+
+    const onMove = (event: MouseEvent) => {
       if (!ref.current) return;
-      const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth - 0.5) * 2;
-      const y = (e.clientY / innerHeight - 0.5) * 2;
-      ref.current.style.setProperty("--mx", `${x * 20}px`);
-      ref.current.style.setProperty("--my", `${y * 20}px`);
+
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+
+      frameId = window.requestAnimationFrame(() => {
+        const { innerWidth, innerHeight } = window;
+        const x = (event.clientX / innerWidth - 0.5) * 2;
+        const y = (event.clientY / innerHeight - 0.5) * 2;
+        ref.current?.style.setProperty("--mx", `${x * 18}px`);
+        ref.current?.style.setProperty("--my", `${y * 18}px`);
+      });
     };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   return (
@@ -25,29 +47,31 @@ export const Hero = () => {
       <div
         className="absolute inset-0 will-change-transform"
         style={{
-          transform: "translate3d(calc(var(--mx, 0px) * -1), calc(var(--my, 0px) * -1), 0) scale(1.08)",
+          transform: "translate3d(calc(var(--mx, 0px) * -1), calc(var(--my, 0px) * -1), 0) scale(1.04)",
         }}
       >
         <img
           src={heroImg}
-          alt="Svećana sala Borović Bogatić - elegantan ambijent"
+          alt="Svečana sala Borović Bogatić - elegantan ambijent"
           className="absolute inset-0 h-full w-full object-cover"
           fetchPriority="high"
+          decoding="async"
+          sizes="100vw"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         <div className="absolute inset-0 bg-gradient-to-br from-purple/20 via-transparent to-rose/20 mix-blend-overlay" />
       </div>
 
       <div
-        className="absolute -top-20 -left-20 h-[480px] w-[480px] rounded-full blur-3xl opacity-40 animate-float-slow"
+        className="absolute -left-20 -top-20 h-[480px] w-[480px] rounded-full blur-3xl opacity-40 animate-float-slow"
         style={{ background: "radial-gradient(circle, hsl(290 80% 50% / 0.6), transparent 70%)", transform: "translate3d(var(--mx,0), var(--my,0), 0)" }}
       />
       <div
-        className="absolute right-0 bottom-0 h-[600px] w-[600px] rounded-full blur-3xl opacity-30 animate-float-slower"
+        className="absolute bottom-0 right-0 h-[600px] w-[600px] rounded-full blur-3xl opacity-30 animate-float-slower"
         style={{ background: "radial-gradient(circle, hsl(340 80% 55% / 0.6), transparent 70%)" }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pt-32 pb-20 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-20 pt-32 lg:px-8">
         <div className="max-w-4xl">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full px-4 py-1.5 glass animate-fade-in">
             <Sparkles className="h-3.5 w-3.5 text-primary" />
@@ -55,7 +79,8 @@ export const Hero = () => {
           </div>
 
           <h1 className="font-serif text-5xl leading-[1.02] tracking-tight animate-fade-in sm:text-6xl lg:text-8xl" style={{ animationDelay: "0.1s" }}>
-            Svečana sala<br />
+            Svečana sala
+            <br />
             <span className="text-gradient italic">Borović</span>
           </h1>
 
@@ -66,10 +91,16 @@ export const Hero = () => {
 
           <div className="mt-10 flex flex-col gap-4 animate-fade-in sm:flex-row" style={{ animationDelay: "0.4s" }}>
             <Button asChild variant="hero" size="xl" className="animate-pulse-glow">
-              <a href={PRIMARY_PHONE_HREF}><Phone className="h-5 w-5" /> Pozovite nas</a>
+              <a href={PRIMARY_PHONE_HREF}>
+                <Phone className="h-5 w-5" />
+                Pozovite nas
+              </a>
             </Button>
             <Button asChild variant="glass" size="xl">
-              <a href="/kontakt"><MessageCircle className="h-5 w-5" /> Pošaljite poruku</a>
+              <Link to="/kontakt">
+                <MessageCircle className="h-5 w-5" />
+                Pošaljite poruku
+              </Link>
             </Button>
           </div>
 

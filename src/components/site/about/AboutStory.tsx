@@ -7,7 +7,14 @@ export const AboutStory = () => (
       <div className="grid lg:grid-cols-12 gap-14 lg:gap-20 items-center">
         <div className="reveal-up lg:col-span-7">
           <div className="relative aspect-[4/5] lg:aspect-[3/4] rounded-3xl overflow-hidden shadow-elegant">
-            <img src={storyImg} alt="Atmosfera Sale Borović" loading="lazy" className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+            <img
+              src={storyImg}
+              alt="Atmosfera Sale Borović"
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover transition-transform ease-out hover:scale-105"
+              style={{ transitionDuration: "2s" }}
+            />
             <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent" />
           </div>
           <div className="absolute -bottom-6 left-6 lg:left-16 hidden md:block">

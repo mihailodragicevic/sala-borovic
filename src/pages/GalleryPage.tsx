@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { PageHeader } from "@/components/site/PageHeader";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import { Seo } from "@/components/site/Seo";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { galleryImages } from "@/lib/galleryImages";
@@ -33,8 +34,16 @@ const GalleryPage = () => {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!isModalOpen) return;
-      if (event.key === "ArrowLeft") showPrevious();
-      if (event.key === "ArrowRight") showNext();
+      if (event.key === "ArrowLeft") {
+        setSelectedIndex((current) =>
+          current === null ? current : (current + galleryImages.length - 1) % galleryImages.length,
+        );
+      }
+      if (event.key === "ArrowRight") {
+        setSelectedIndex((current) =>
+          current === null ? current : (current + 1) % galleryImages.length,
+        );
+      }
       if (event.key === "Escape") closeModal();
     };
 
@@ -47,23 +56,26 @@ const GalleryPage = () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
     };
-  }, [isModalOpen, selectedIndex]);
+  }, [isModalOpen]);
 
   return (
     <Layout>
+      <Seo
+        title="Galerija | Svečana sala Borović Bogatić"
+        description="Galerija svečane sale Borović u Bogatiću. Pogledajte salu za svadbe Bogatić, dekoraciju, rođendane i proslave kroz fotografije enterijera i atmosfere."
+        pathname="/galerija"
+      />
       <PageHeader
         eyebrow="Galerija"
         title={<>Trenuci u <span className="text-gradient italic">našoj sali</span></>}
         subtitle="Pogledajte atmosferu nezaboravnih večeri koje smo zajedno sa našim gostima stvarali."
       />
+
       <section className="pb-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="grid auto-rows-[220px] grid-cols-2 gap-4 lg:auto-rows-[260px] lg:grid-cols-4">
             {galleryImages.map((image, index) => {
-              const span =
-                index === 0 ? "lg:col-span-2 lg:row-span-2" :
-                index % 7 === 0 ? "lg:col-span-2" :
-                "";
+              const span = index === 0 ? "lg:col-span-2 lg:row-span-2" : index % 7 === 0 ? "lg:col-span-2" : "";
 
               return (
                 <div
@@ -71,12 +83,23 @@ const GalleryPage = () => {
                   className={`reveal-up group relative cursor-pointer overflow-hidden rounded-2xl ${span}`}
                   style={{ transitionDelay: `${index * 35}ms` }}
                   onClick={() => openModal(index)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      openModal(index);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Otvori sliku: ${image.alt}`}
                 >
                   <img
                     src={image.src}
                     alt={image.alt}
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] group-hover:scale-110"
+                    decoding="async"
+                    sizes={index === 0 ? "(min-width: 1024px) 50vw, 100vw" : "(min-width: 1024px) 25vw, 50vw"}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/10 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-50" />
                 </div>
@@ -92,15 +115,15 @@ const GalleryPage = () => {
             <div className="relative flex h-full w-full items-center justify-center px-4 py-8 sm:px-8">
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 z-50 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black/80"
-                aria-label="Zatvori"
+                className="absolute right-4 top-4 z-50 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black/80"
+                aria-label="Zatvori galeriju"
               >
                 <X className="h-6 w-6" />
               </button>
 
               <button
                 onClick={showPrevious}
-                className="absolute top-1/2 left-4 z-50 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black/80"
+                className="absolute left-4 top-1/2 z-50 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black/80"
                 aria-label="Prethodna slika"
               >
                 <ChevronLeft className="h-6 w-6" />
@@ -108,7 +131,7 @@ const GalleryPage = () => {
 
               <button
                 onClick={showNext}
-                className="absolute top-1/2 right-4 z-50 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black/80"
+                className="absolute right-4 top-1/2 z-50 -translate-y-1/2 rounded-full bg-black/60 p-3 text-white transition-colors hover:bg-black/80"
                 aria-label="Sledeća slika"
               >
                 <ChevronRight className="h-6 w-6" />
@@ -118,6 +141,7 @@ const GalleryPage = () => {
                 <img
                   src={galleryImages[selectedIndex].src}
                   alt={galleryImages[selectedIndex].alt}
+                  decoding="async"
                   className="h-full w-auto max-w-full rounded-2xl object-contain"
                 />
               </div>

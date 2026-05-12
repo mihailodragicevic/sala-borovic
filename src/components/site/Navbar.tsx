@@ -34,7 +34,14 @@ export const Navbar = () => {
       <div className={`mx-auto max-w-7xl px-5 transition-all duration-500 lg:px-8 ${scrolled ? "glass rounded-2xl" : ""}`}>
         <div className="flex h-14 items-center justify-between">
           <Link to="/" className="group flex items-center" aria-label="Sala Borović - početna">
-            <img src={logo} alt="Svećana sala Borović" className="h-12 w-auto object-contain lg:h-14" />
+            <img
+              src={logo}
+              alt="Svečana sala Borović"
+              width="176"
+              height="56"
+              decoding="async"
+              className="h-12 w-auto object-contain lg:h-14"
+            />
           </Link>
 
           <nav className="hidden items-center gap-9 lg:flex">
@@ -56,17 +63,26 @@ export const Navbar = () => {
 
           <div className="hidden lg:block">
             <Button asChild variant="hero" size="lg">
-              <a href={PRIMARY_PHONE_HREF}><Phone className="h-4 w-4" /> Pozovite nas</a>
+              <a href={PRIMARY_PHONE_HREF}>
+                <Phone className="h-4 w-4" />
+                Pozovite nas
+              </a>
             </Button>
           </div>
 
-          <button className="p-2 text-foreground lg:hidden" onClick={() => setOpen(!open)} aria-label="Meni">
+          <button
+            className="p-2 text-foreground lg:hidden"
+            onClick={() => setOpen((prev) => !prev)}
+            aria-label="Meni"
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+          >
             {open ? <X /> : <Menu />}
           </button>
         </div>
 
         {open && (
-          <div className="animate-fade-in pb-6 pt-2 lg:hidden">
+          <div id="mobile-navigation" className="animate-fade-in pb-6 pt-2 lg:hidden">
             <nav className="flex flex-col gap-4">
               {links.map((link) => (
                 <NavLink key={link.to} to={link.to} end={link.to === "/"} className="border-b border-border/40 py-2 text-foreground/90">
@@ -74,7 +90,10 @@ export const Navbar = () => {
                 </NavLink>
               ))}
               <Button asChild variant="hero" className="mt-2">
-                <a href={PRIMARY_PHONE_HREF}><Phone className="h-4 w-4" /> Pozovite nas</a>
+                <a href={PRIMARY_PHONE_HREF}>
+                  <Phone className="h-4 w-4" />
+                  Pozovite nas
+                </a>
               </Button>
             </nav>
           </div>
