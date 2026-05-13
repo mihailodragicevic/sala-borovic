@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { MessageCircle, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-venue.webp";
+import heroImgMobile from "@/assets/responsive/hero-venue-mobile.jpg";
 import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 export const Hero = () => {
@@ -52,11 +53,14 @@ export const Hero = () => {
       >
         <img
           src={heroImg}
+          srcSet={`${heroImgMobile} 820w, ${heroImg} 1200w`}
           alt="Svečana sala Borović Bogatić - elegantan ambijent"
           className="absolute inset-0 h-full w-full object-cover"
           fetchPriority="high"
           decoding="async"
           sizes="100vw"
+          width="1200"
+          height="1600"
         />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         <div className="absolute inset-0 bg-gradient-to-br from-purple/20 via-transparent to-rose/20 mix-blend-overlay" />

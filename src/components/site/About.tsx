@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import about from "@/assets/about-venue.webp";
+import aboutMobile from "@/assets/responsive/about-venue-mobile.jpg";
 import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 export const About = () => (
@@ -10,7 +11,17 @@ export const About = () => (
       <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <div className="reveal-up relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-elegant">
-            <img src={about} alt="Enterijer Sale Borović" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+            <img
+              src={about}
+              srcSet={`${aboutMobile} 640w, ${about} 1200w`}
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              alt="Enterijer Sale Borović"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="1600"
+              className="h-full w-full object-cover"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
           </div>
           <div className="glass absolute -bottom-8 -right-4 max-w-[240px] rounded-2xl p-6 shadow-elegant lg:-right-10">

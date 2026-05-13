@@ -9,7 +9,6 @@ import { CtaBanner } from "@/components/site/CtaBanner";
 import { Seo } from "@/components/site/Seo";
 import { CONTACT_MAPS_HREF, FACEBOOK_HREF, INSTAGRAM_HREF } from "@/lib/contact";
 import { DEFAULT_OG_IMAGE, SITE_LOGO, SITE_URL } from "@/lib/seo";
-import heroImg from "@/assets/hero-venue.webp";
 
 const seoSchema = [
   {
@@ -37,10 +36,7 @@ const seoSchema = [
       "@type": "ImageObject",
       url: SITE_LOGO,
     },
-    sameAs: [
-      INSTAGRAM_HREF,
-      FACEBOOK_HREF,
-    ],
+    sameAs: [INSTAGRAM_HREF, FACEBOOK_HREF],
   },
   {
     "@context": "https://schema.org",
@@ -60,16 +56,12 @@ const seoSchema = [
       addressCountry: "RS",
     },
     priceRange: "$$",
-    description:
-      "Svečana sala Bogatić za svadbe, rođendane i proslave u elegantnom ambijentu.",
+    description: "Svečana sala Bogatić za svadbe, rođendane i proslave u elegantnom ambijentu.",
     areaServed: {
       "@type": "Place",
       name: "Bogatić i Mačva",
     },
-    sameAs: [
-      INSTAGRAM_HREF,
-      FACEBOOK_HREF,
-    ],
+    sameAs: [INSTAGRAM_HREF, FACEBOOK_HREF],
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -95,16 +87,27 @@ const Index = () => (
       title="Svečana sala Borović Bogatić | Sala za svadbe i proslave"
       description="Svečana sala Bogatić za svadbe, rođendane i proslave do 450 gostiju. Elegantna sala za svadbe Bogatić sa organizacijom, dekoracijom i rezervacijama."
       pathname="/"
-      preloadImages={[heroImg]}
       schema={seoSchema}
     />
     <Hero />
-    <Benefits />
-    <Gallery />
-    <About />
-    <Services />
-    <Testimonials />
-    <CtaBanner />
+    <div className="content-auto">
+      <Benefits />
+    </div>
+    <div className="content-auto">
+      <Gallery />
+    </div>
+    <div className="content-auto">
+      <About />
+    </div>
+    <div className="content-auto">
+      <Services />
+    </div>
+    <div className="content-auto">
+      <Testimonials />
+    </div>
+    <div className="content-auto">
+      <CtaBanner />
+    </div>
   </Layout>
 );
 

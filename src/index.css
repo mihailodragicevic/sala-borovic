@@ -129,6 +129,10 @@
     transform: translateY(-6px);
     box-shadow: var(--shadow-elegant);
   }
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 900px;
+  }
 }
 
 @keyframes float-slow {
