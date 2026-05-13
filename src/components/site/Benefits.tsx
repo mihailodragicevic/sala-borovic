@@ -3,7 +3,7 @@ import { SectionHeading } from "./SectionHeading";
 
 const items = [
   { icon: Users, title: "Kapacitet do 450 gostiju", text: "Prostrana sala koja sa lakoćom prima i najveće svadbe i porodična slavlja, bez kompromisa u udobnosti." },
-  { icon: Sparkles, title: "Moderan i elegantan ambijent", text: "Pažljivo osmišljen enterijer sa kristalnim lusterima, mekim svetlom i detaljima koji ostavljaju utisak." },
+  { icon: Sparkles, title: "Moderan i elegantan ambijent", text: "Pažljivo osmišljen enterijer sa prijatnom atmosferom, modernim detaljima i osvetljenjem koje svakoj proslavi daje poseban utisak." },
   { icon: CalendarHeart, title: "Kompletna organizacija", text: "Od menija i dekoracije do rasporeda sedenja - vodimo računa o svakom detalju vašeg dana." },
   { icon: MapPin, title: "Odlična lokacija i parking", text: "U srcu Bogatića, sa lako pristupačnim ulazom i prostranim parkingom za sve vaše goste." },
 ];
