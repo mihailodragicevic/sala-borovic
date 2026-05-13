@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Allow: /icons/
-Allow: /social/
 
 Sitemap: https://salaborovic.rs/sitemap.xml
-Host: https://salaborovic.rs
