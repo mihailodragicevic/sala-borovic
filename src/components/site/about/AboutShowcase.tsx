@@ -134,9 +134,9 @@ export const AboutShowcase = () => {
         <div className="reveal-up">
           <div className="mb-6 text-xs uppercase tracking-[0.5em] text-primary/90">Cinematic showcase</div>
           <h2 className="max-w-4xl font-serif text-4xl leading-[1.05] sm:text-5xl lg:text-7xl">
-            Dozivite atmosferu
+            Doživite atmosferu
             <br />
-            <span className="text-gradient italic">sale Borovic.</span>
+            <span className="text-gradient italic">sale Borović.</span>
           </h2>
           <p className="mx-auto mt-8 max-w-xl text-lg font-light text-foreground/75">
             Slike govore mnogo. Atmosfera govori sve.

@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/lib/contact";
 import weddingImage from "@/assets/Mladenci.webp";
 import birthdayImage from "@/assets/Matura.webp";
-import specialImage from "@/assets/Dekoracija.webp";
+import specialImage from "@/assets/Maturanti.webp";
 import appetizerImage from "@/assets/Predjelo.webp";
 import dessertImage from "@/assets/Slatki sto.webp";
 import flexibilityImage from "@/assets/Unutrasnjost sale.webp";
@@ -41,12 +41,12 @@ const showcaseItems = [
   },
   {
     eyebrow: "Proslave Bogatic",
-    title: "Posebni dogadjaji i porodicna okupljanja",
-    text: "Bilo da organizujete krstenje, punoletstvo, godisnjicu ili poslovni dogadjaj, nas prostor pruza elegantan okvir za svaku vrstu proslave.",
+    title: "Maturske veceri za pamcenje",
+    text: "Organizujemo maturske veceri u elegantnom ambijentu, sa dovoljno prostora, sjajnom atmosferom i uslugom koja svakoj generaciji omogucava proslavu za nezaboravno vece.",
     ctaLabel: "Zakazite razgovor",
     ctaTo: "/kontakt",
     image: specialImage,
-    alt: "Elegantno dekorisan prostor za posebne proslave u Bogaticu",
+    alt: "Matursko vece u svecanoj sali Borovic u Bogaticu",
   },
 ];
 
