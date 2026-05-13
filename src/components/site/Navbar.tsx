@@ -31,7 +31,7 @@ export const Navbar = () => {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "py-3" : "py-5"}`}>
-      <div className={`mx-auto max-w-7xl px-5 transition-all duration-500 lg:px-8 ${scrolled ? "glass rounded-2xl" : ""}`}>
+      <div className={`mx-auto max-w-7xl px-5 transition-all duration-500 lg:px-8 ${scrolled || open ? "glass rounded-2xl" : ""}`}>
         <div className="flex h-14 items-center justify-between">
           <Link to="/" className="group flex items-center" aria-label="Sala Borović - početna">
             <img
@@ -71,7 +71,7 @@ export const Navbar = () => {
           </div>
 
           <button
-            className="p-2 text-foreground lg:hidden"
+            className={`p-2 text-foreground transition-all duration-300 lg:hidden ${!scrolled && !open ? "glass rounded-2xl" : ""}`}
             onClick={() => setOpen((prev) => !prev)}
             aria-label="Meni"
             aria-expanded={open}
@@ -82,7 +82,10 @@ export const Navbar = () => {
         </div>
 
         {open && (
-          <div id="mobile-navigation" className="animate-fade-in pb-6 pt-2 lg:hidden">
+          <div
+            id="mobile-navigation"
+            className="animate-fade-in pb-6 pt-2 lg:hidden"
+          >
             <nav className="flex flex-col gap-4">
               {links.map((link) => (
                 <NavLink key={link.to} to={link.to} end={link.to === "/"} className="border-b border-border/40 py-2 text-foreground/90">

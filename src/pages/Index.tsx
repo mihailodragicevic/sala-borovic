@@ -7,7 +7,7 @@ import { Services } from "@/components/site/Services";
 import { Testimonials } from "@/components/site/Testimonials";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { Seo } from "@/components/site/Seo";
-import { CONTACT_MAPS_HREF, FACEBOOK_HREF, INSTAGRAM_HREF } from "@/lib/contact";
+import { CONTACT_EMAIL, CONTACT_MAPS_HREF, FACEBOOK_HREF, INSTAGRAM_HREF } from "@/lib/contact";
 import { DEFAULT_OG_IMAGE, SITE_LOGO, SITE_URL } from "@/lib/seo";
 
 const seoSchema = [
@@ -47,7 +47,7 @@ const seoSchema = [
     image: DEFAULT_OG_IMAGE,
     logo: SITE_LOGO,
     telephone: "+381644820780",
-    email: "info@salaborovic.rs",
+    email: CONTACT_EMAIL,
     hasMap: CONTACT_MAPS_HREF,
     address: {
       "@type": "PostalAddress",

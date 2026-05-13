@@ -2,7 +2,7 @@ import { Layout } from "@/components/site/Layout";
 import { PageHeader } from "@/components/site/PageHeader";
 import { Contact } from "@/components/site/Contact";
 import { Seo } from "@/components/site/Seo";
-import { CONTACT_MAPS_HREF, FACEBOOK_HREF, INSTAGRAM_HREF } from "@/lib/contact";
+import { CONTACT_EMAIL, CONTACT_MAPS_HREF, FACEBOOK_HREF, INSTAGRAM_HREF } from "@/lib/contact";
 import { DEFAULT_OG_IMAGE, SITE_LOGO, SITE_URL } from "@/lib/seo";
 
 const contactSchema = {
@@ -14,7 +14,7 @@ const contactSchema = {
   image: DEFAULT_OG_IMAGE,
   logo: SITE_LOGO,
   telephone: "+381644820780",
-  email: "info@salaborovic.rs",
+  email: CONTACT_EMAIL,
   hasMap: CONTACT_MAPS_HREF,
   address: {
     "@type": "PostalAddress",

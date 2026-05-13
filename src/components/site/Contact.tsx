@@ -228,7 +228,7 @@ export const Contact = () => {
                       setEmailError("");
                     }}
                     type="email"
-                    placeholder="npr. ime.prezime@gmail.com"
+                    placeholder="milosborovic91@gmail.com"
                     className={`h-12 bg-background/40 ${emailError ? "border-red-500 focus-visible:ring-red-500/30" : ""}`}
                   />
                   {emailError && <p className="text-sm font-medium text-red-500">{emailError}</p>}
