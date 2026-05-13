@@ -53,7 +53,7 @@ export const Hero = () => {
       >
         <img
           src={heroImg}
-          srcSet={`${heroImgMobile} 820w, ${heroImg} 1200w`}
+          srcSet={`${heroImgMobile} 768w, ${heroImg} 1200w`}
           alt="Svečana sala Borović Bogatić - elegantan ambijent"
           className="absolute inset-0 h-full w-full object-cover"
           fetchPriority="high"

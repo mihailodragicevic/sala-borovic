@@ -1,4 +1,6 @@
 import { createRoot } from "react-dom/client";
+import "@fontsource-variable/inter/wght.css";
+import "@fontsource-variable/cormorant-garamond/wght.css";
 import App from "./App.tsx";
 import heroImg from "@/assets/hero-venue.webp";
 import heroImgMobile from "@/assets/responsive/hero-venue-mobile.jpg";
@@ -13,7 +15,7 @@ const preloadHeroImage = () => {
   link.as = "image";
   link.href = heroImg;
   link.setAttribute("fetchpriority", "high");
-  link.setAttribute("imagesrcset", `${heroImgMobile} 820w, ${heroImg} 1200w`);
+  link.setAttribute("imagesrcset", `${heroImgMobile} 768w, ${heroImg} 1200w`);
   link.setAttribute("imagesizes", "100vw");
   link.setAttribute("data-critical-image", "home-hero");
   document.head.appendChild(link);

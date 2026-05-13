@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/responsive/logo-navbar.png";
 import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 const links = [
