@@ -6,6 +6,7 @@ import { isValidPhoneNumber } from "libphonenumber-js";
 import "react-phone-number-input/style.css";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import {
   CONTACT_ADDRESS,
@@ -23,9 +24,10 @@ import {
 } from "@/lib/contact";
 
 const schema = z.object({
-  name: z.string().trim().min(2, "Unesite vaš email").max(80),
-  email: z.union([z.literal(""), z.string().trim().email("Unesite ispravan email")]),
+  name: z.string().trim().min(2, "Unesite ime i prezime").max(80),
 });
+
+const emailSchema = z.string().trim().email("Unesite ispravan email");
 
 const contactCards = [
   {
@@ -63,6 +65,7 @@ const socialLinks = [
 
 export const Contact = () => {
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
   const [phoneValue, setPhoneValue] = useState<string | undefined>(undefined);
   const [nameError, setNameError] = useState("");
@@ -108,9 +111,14 @@ export const Contact = () => {
       setPhoneError("");
     }
 
-    const result = schema.safeParse({ name: trimmedName, email: trimmedEmail });
+    const result = schema.safeParse({ name: trimmedName });
     if (!result.success) {
-      setEmailError(result.error.issues[0].message);
+      setNameError(result.error.issues[0].message);
+      hasError = true;
+    }
+
+    if (trimmedEmail && !emailSchema.safeParse(trimmedEmail).success) {
+      setEmailError("Unesite ispravan email");
       hasError = true;
     } else {
       setEmailError("");
@@ -122,6 +130,7 @@ export const Contact = () => {
 
     toast.success("Zahtev je uspesno poslat", { position: "top-center" });
     setName("");
+    setDescription("");
     setEmail("");
     setPhoneValue(undefined);
     setNameError("");
@@ -209,7 +218,7 @@ export const Contact = () => {
 
                 <div className="space-y-2">
                   <label htmlFor="contact-email" className="block text-sm font-medium text-foreground/88">
-                    Email
+                    Email (Opciono)
                   </label>
                   <Input
                     id="contact-email"
@@ -361,6 +370,20 @@ export const Contact = () => {
                     }}
                   />
                   {phoneError && <p className="mt-1.5 text-sm font-medium text-red-500">{phoneError}</p>}
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="contact-description" className="block text-sm font-medium text-foreground/88">
+                    Opis (Opciono)
+                  </label>
+                  <Textarea
+                    id="contact-description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Unesite kratak opis upita"
+                    className="min-h-32 resize-y bg-background/40"
+                    maxLength={500}
+                  />
                 </div>
 
                 <Button type="submit" variant="hero" size="xl" className="w-full">
