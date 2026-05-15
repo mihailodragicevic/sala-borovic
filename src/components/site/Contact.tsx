@@ -462,7 +462,7 @@ export const Contact = () => {
                     name="opis_gosta"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Unesite kratak opis gosta"
+                    placeholder="Unesite kratak opis"
                     className="min-h-32 resize-y bg-background/40"
                     maxLength={500}
                   />
