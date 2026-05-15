@@ -8,6 +8,7 @@ export const PRIMARY_WHATSAPP_HREF = "https://wa.me/381644820780";
 export const SECONDARY_WHATSAPP_HREF = "https://wa.me/381643877773";
 export const INSTAGRAM_HREF = "https://www.instagram.com/svecana__sala__borovic/";
 export const FACEBOOK_HREF = "https://www.facebook.com/p/Sve%C4%8Dana-sala-Borovi%C4%87-Bogati%C4%87-100054290420091/";
+export const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpqbgjda";
 
 export const CONTACT_EMAIL = "milosborovic91@gmail.com";
 export const CONTACT_ADDRESS = "Pavla Orlovića 51, Bogatić";

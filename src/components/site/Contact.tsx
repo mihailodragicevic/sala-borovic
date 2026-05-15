@@ -11,6 +11,7 @@ import { toast } from "sonner";
 import {
   CONTACT_ADDRESS,
   CONTACT_EMAIL,
+  FORMSPREE_ENDPOINT,
   CONTACT_MAPS_EMBED,
   CONTACT_MAPS_HREF,
   FACEBOOK_HREF,
@@ -68,9 +69,12 @@ export const Contact = () => {
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
   const [phoneValue, setPhoneValue] = useState<string | undefined>(undefined);
+  const [honeypot, setHoneypot] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
   const handlePhoneChange = (value: string | undefined) => {
     setPhoneValue(value);
@@ -87,12 +91,19 @@ export const Contact = () => {
     }
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
 
     const trimmedName = name.trim();
     const trimmedEmail = email.trim();
+    const trimmedDescription = description.trim();
     let hasError = false;
+
+    setSubmitError("");
 
     if (!trimmedName) {
       setNameError("Ovo polje je obavezno");
@@ -128,14 +139,70 @@ export const Contact = () => {
       return;
     }
 
-    toast.success("Zahtev je uspesno poslat", { position: "top-center" });
-    setName("");
-    setDescription("");
-    setEmail("");
-    setPhoneValue(undefined);
-    setNameError("");
-    setEmailError("");
-    setPhoneError("");
+    const sentAt = new Intl.DateTimeFormat("sr-RS", {
+      dateStyle: "full",
+      timeStyle: "short",
+    }).format(new Date());
+
+    const payload = {
+      ime_prezime: trimmedName,
+      ...(trimmedEmail ? { email: trimmedEmail } : {}),
+      broj_telefona: phoneValue,
+      opis_gosta: trimmedDescription || "Nije unet opis gosta.",
+      vreme_slanja: sentAt,
+      _gotcha: honeypot,
+    };
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        const errorMessage =
+          result?.errors?.[0]?.message ||
+          "Doslo je do greske prilikom slanja. Pokusajte ponovo ili nas pozovite.";
+
+        setSubmitError(errorMessage);
+        toast.error("Slanje nije uspelo", {
+          description: errorMessage,
+          position: "top-center",
+        });
+        return;
+      }
+
+      toast.success("Zahtev je uspesno poslat", {
+        description: "Hvala vam. Javicemo se u najkracem roku.",
+        position: "top-center",
+      });
+      setName("");
+      setDescription("");
+      setEmail("");
+      setPhoneValue(undefined);
+      setHoneypot("");
+      setNameError("");
+      setEmailError("");
+      setPhoneError("");
+      setSubmitError("");
+    } catch {
+      const errorMessage = "Veza sa serverom nije uspela. Pokusajte ponovo za nekoliko minuta.";
+      setSubmitError(errorMessage);
+      toast.error("Slanje nije uspelo", {
+        description: errorMessage,
+        position: "top-center",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -195,13 +262,25 @@ export const Contact = () => {
               <h3 className="font-serif text-3xl">Posaljite zahtev za poziv</h3>
               <p className="mt-2 text-foreground/70">Ostavite vase ime i broj telefona - javljamo se u najkracem roku.</p>
 
-              <form onSubmit={submit} className="mt-8 space-y-4">
+              <form onSubmit={submit} noValidate className="mt-8 space-y-4">
+                <input
+                  type="text"
+                  name="_gotcha"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                />
+
                 <div className="space-y-2">
                   <label htmlFor="contact-name" className="block text-sm font-medium text-foreground/88">
                     Ime i prezime *
                   </label>
                   <Input
                     id="contact-name"
+                    name="name"
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
@@ -222,13 +301,14 @@ export const Contact = () => {
                   </label>
                   <Input
                     id="contact-email"
+                    name="email"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
                       setEmailError("");
                     }}
                     type="email"
-                    placeholder="milosborovic91@gmail.com"
+                    placeholder="ime.prezime@email.com"
                     className={`h-12 bg-background/40 ${emailError ? "border-red-500 focus-visible:ring-red-500/30" : ""}`}
                   />
                   {emailError && <p className="text-sm font-medium text-red-500">{emailError}</p>}
@@ -366,6 +446,7 @@ export const Contact = () => {
                     placeholder="Unesite broj telefona"
                     className={`PhoneInput ${phoneError ? "error" : ""}`}
                     numberInputProps={{
+                      name: "phone",
                       className: "PhoneInputNumber",
                     }}
                   />
@@ -374,20 +455,27 @@ export const Contact = () => {
 
                 <div className="space-y-2">
                   <label htmlFor="contact-description" className="block text-sm font-medium text-foreground/88">
-                    Opis (Opciono)
+                    Opis gosta (Opciono)
                   </label>
                   <Textarea
                     id="contact-description"
+                    name="opis_gosta"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Unesite kratak opis upita"
+                    placeholder="Unesite kratak opis gosta"
                     className="min-h-32 resize-y bg-background/40"
                     maxLength={500}
                   />
                 </div>
 
-                <Button type="submit" variant="hero" size="xl" className="w-full">
-                  Posaljite zahtev
+                {submitError && (
+                  <div className="rounded-2xl border border-red-500/35 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+                    {submitError}
+                  </div>
+                )}
+
+                <Button type="submit" variant="hero" size="xl" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? "Saljemo zahtev..." : "Posaljite zahtev"}
                 </Button>
               </form>
 
