@@ -148,7 +148,7 @@ export const Contact = () => {
       ime_prezime: trimmedName,
       ...(trimmedEmail ? { email: trimmedEmail } : {}),
       broj_telefona: phoneValue,
-      opis_gosta: trimmedDescription || "Nije unet opis gosta.",
+      opis_proslave: trimmedDescription || "Nije unet opis proslave.",
       vreme_slanja: sentAt,
       _gotcha: honeypot,
     };
@@ -455,7 +455,7 @@ export const Contact = () => {
 
                 <div className="space-y-2">
                   <label htmlFor="contact-description" className="block text-sm font-medium text-foreground/88">
-                    Opis gosta (Opciono)
+                    Opis proslave (Opciono)
                   </label>
                   <Textarea
                     id="contact-description"

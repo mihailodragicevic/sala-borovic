@@ -77,6 +77,9 @@ export const Footer = () => (
           Politika privatnosti
         </Link>
       </div>
+      <div className="mt-6 text-center text-[10px] text-muted-foreground/60">
+        Made by Mihailo Dragićević
+      </div>
     </div>
   </footer>
 );
