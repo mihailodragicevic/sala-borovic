@@ -1,3 +1,6 @@
+http://salaborovic.com/* https://salaborovic.com/:splat 301!
+http://www.salaborovic.com/* https://salaborovic.com/:splat 301!
+https://www.salaborovic.com/* https://salaborovic.com/:splat 301!
 /assets/* /assets/:splat 200
 /icons/* /icons/:splat 200
 /social/* /social/:splat 200

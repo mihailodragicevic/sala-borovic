@@ -62,7 +62,7 @@ export const Seo = ({
   imageAlt = DEFAULT_OG_IMAGE_ALT,
   type = "website",
   keywords = DEFAULT_KEYWORDS,
-  robots = "index, follow",
+  robots = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   schema,
   preloadImages = [],
 }: SeoProps) => {
@@ -74,6 +74,7 @@ export const Seo = ({
     ensureNamedMeta("keywords").content = keywords;
     ensureNamedMeta("author").content = SITE_NAME;
     ensureNamedMeta("robots").content = robots;
+    ensureNamedMeta("googlebot").content = robots;
     ensureNamedMeta("twitter:card").content = "summary_large_image";
     ensureNamedMeta("twitter:title").content = title;
     ensureNamedMeta("twitter:description").content = description;
