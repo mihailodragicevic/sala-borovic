@@ -7,7 +7,7 @@ Already prepared in the project (canonical host is `https://salaborovic.rs`):
 - `sitemap.xml` includes all public pages
 - Open Graph and Twitter URLs use `salaborovic.rs`
 - JSON-LD structured data (WebSite, Organization, LocalBusiness/EventVenue) is rendered on the homepage
-- `www` to apex redirects are prepared for Vercel, Netlify-style hosting, Apache, and IIS
+- `www` to apex redirects are prepared for Cloudflare Pages, Netlify-style hosting, Apache, and IIS
 - HTTPS canonical host rules are prepared in Apache (`.htaccess`), IIS (`web.config`), and Netlify-style redirects (`_redirects`)
 
 ## What to do after the site is live
