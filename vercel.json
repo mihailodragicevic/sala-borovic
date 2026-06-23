@@ -5,10 +5,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.salaborovic.com"
+          "value": "www.salaborovic.rs"
         }
       ],
-      "destination": "https://salaborovic.com/:path*",
+      "destination": "https://salaborovic.rs/:path*",
       "permanent": true
     }
   ],

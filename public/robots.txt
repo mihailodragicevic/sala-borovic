@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://salaborovic.com/sitemap.xml
+Sitemap: https://salaborovic.rs/sitemap.xml

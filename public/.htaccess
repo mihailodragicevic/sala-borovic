@@ -4,8 +4,8 @@
 
   # Use a single canonical host for SEO and force HTTPS.
   RewriteCond %{HTTPS} !=on [OR]
-  RewriteCond %{HTTP_HOST} ^www\.salaborovic\.com$ [NC]
-  RewriteRule ^ https://salaborovic.com%{REQUEST_URI} [L,R=301]
+  RewriteCond %{HTTP_HOST} ^www\.salaborovic\.rs$ [NC]
+  RewriteRule ^ https://salaborovic.rs%{REQUEST_URI} [L,R=301]
 
   # Let real files and directories resolve normally.
   RewriteCond %{REQUEST_FILENAME} -f [OR]

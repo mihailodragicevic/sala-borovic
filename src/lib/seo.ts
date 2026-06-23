@@ -1,4 +1,4 @@
-export const SITE_URL = "https://salaborovic.com";
+export const SITE_URL = "https://salaborovic.rs";
 export const SITE_NAME = "Svečana sala Borović Bogatić";
 export const SITE_LOGO = `${SITE_URL}/icons/icon-512x512.png`;
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/social/og-image-1200x630.png`;
