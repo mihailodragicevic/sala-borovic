@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import {
   CONTACT_ADDRESS,
   CONTACT_EMAIL,
@@ -18,7 +18,7 @@ export const Footer = () => (
       <div className="grid gap-10 md:grid-cols-5">
         <div className="md:col-span-2">
           <Link to="/" aria-label="Sala Borović - početna" className="inline-block">
-            <img src={logo} alt="Svečana sala Borović" width="201" height="64" decoding="async" className="h-16 w-auto object-contain" />
+            <img src={logo} alt="Svečana sala Borović" width="157" height="64" decoding="async" className="h-16 w-auto object-contain" />
           </Link>
           <div className="mt-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Bogatić · Mačva</div>
           <p className="mt-5 max-w-md font-light leading-relaxed text-foreground/70">

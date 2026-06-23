@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MessageCircle, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-venue.webp";
-import heroImgMobile from "@/assets/responsive/hero-venue-mobile.jpg";
+import heroImgMobile from "@/assets/responsive/hero-venue-mobile.webp";
 import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 export const Hero = () => {

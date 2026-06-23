@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
 import about from "@/assets/about-venue.webp";
-import aboutMobile from "@/assets/responsive/about-venue-mobile.jpg";
+import aboutMobile from "@/assets/responsive/about-venue-mobile.webp";
 import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 export const About = () => (

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import logo from "@/assets/responsive/logo-navbar.png";
+import logo from "@/assets/responsive/logo-navbar.webp";
 import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 const links = [
@@ -38,7 +38,7 @@ export const Navbar = () => {
               src={logo}
               alt="Svečana sala Borović"
               width="176"
-              height="56"
+              height="71"
               decoding="async"
               className="h-12 w-auto object-contain lg:h-14"
             />

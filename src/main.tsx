@@ -11,7 +11,7 @@ import "@fontsource/cormorant-garamond/600.css";
 import "@fontsource/cormorant-garamond/700.css";
 import App from "./App.tsx";
 import heroImg from "@/assets/hero-venue.webp";
-import heroImgMobile from "@/assets/responsive/hero-venue-mobile.jpg";
+import heroImgMobile from "@/assets/responsive/hero-venue-mobile.webp";
 import "./index.css";
 
 const preloadHeroImage = () => {
