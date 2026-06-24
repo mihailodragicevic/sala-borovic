@@ -41,6 +41,7 @@ const seoSchema = [
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": `${SITE_URL}/#localbusiness`,
     additionalType: "https://schema.org/EventVenue",
     name: "Svečana sala Borović Bogatić",
     url: SITE_URL,
@@ -53,9 +54,17 @@ const seoSchema = [
       "@type": "PostalAddress",
       streetAddress: "Pavla Orlovića 51",
       addressLocality: "Bogatić",
+      addressRegion: "Mačva",
+      postalCode: "15350",
       addressCountry: "RS",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 44.82980690904398,
+      longitude: 19.479375174051405,
+    },
     priceRange: "$$",
+    maximumAttendeeCapacity: 450,
     description: "Svečana sala Bogatić za svadbe, rođendane i proslave u elegantnom ambijentu.",
     areaServed: {
       "@type": "Place",
@@ -66,13 +75,6 @@ const seoSchema = [
       {
         "@type": "ContactPoint",
         telephone: "+381644820780",
-        contactType: "customer service",
-        areaServed: "RS",
-        availableLanguage: ["sr"],
-      },
-      {
-        "@type": "ContactPoint",
-        telephone: "+381643877773",
         contactType: "customer service",
         areaServed: "RS",
         availableLanguage: ["sr"],

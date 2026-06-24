@@ -31,13 +31,6 @@ const contactSchema = {
       areaServed: "RS",
       availableLanguage: ["sr"],
     },
-    {
-      "@type": "ContactPoint",
-      telephone: "+381643877773",
-      contactType: "customer service",
-      areaServed: "RS",
-      availableLanguage: ["sr"],
-    },
   ],
 };
 

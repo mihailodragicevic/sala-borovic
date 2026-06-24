@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
-import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF, SECONDARY_PHONE_DISPLAY } from "@/lib/contact";
+import { PRIMARY_PHONE_DISPLAY, PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 export const AboutFinalCta = () => (
   <section className="relative overflow-hidden py-32 lg:py-44">
@@ -19,7 +19,6 @@ export const AboutFinalCta = () => (
         </Button>
         <div className="mt-10 space-y-2 text-sm tracking-widest text-muted-foreground">
           <div>{PRIMARY_PHONE_DISPLAY}</div>
-          <div>{SECONDARY_PHONE_DISPLAY}</div>
         </div>
       </div>
     </div>

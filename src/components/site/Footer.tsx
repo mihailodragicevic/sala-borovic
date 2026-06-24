@@ -8,8 +8,6 @@ import {
   INSTAGRAM_HREF,
   PRIMARY_PHONE_DISPLAY,
   PRIMARY_PHONE_HREF,
-  SECONDARY_PHONE_DISPLAY,
-  SECONDARY_PHONE_HREF,
 } from "@/lib/contact";
 
 export const Footer = () => (
@@ -39,7 +37,6 @@ export const Footer = () => (
           <div className="mb-4 text-xs uppercase tracking-widest text-primary">Kontakt</div>
           <ul className="space-y-2 text-foreground/80">
             <li><a href={PRIMARY_PHONE_HREF} className="hover:text-foreground">{PRIMARY_PHONE_DISPLAY}</a></li>
-            <li><a href={SECONDARY_PHONE_HREF} className="hover:text-foreground">{SECONDARY_PHONE_DISPLAY}</a></li>
             <li><a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-foreground">{CONTACT_EMAIL}</a></li>
             <li>{CONTACT_ADDRESS}</li>
           </ul>

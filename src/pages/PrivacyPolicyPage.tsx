@@ -6,8 +6,6 @@ import {
   CONTACT_EMAIL,
   PRIMARY_PHONE_DISPLAY,
   PRIMARY_PHONE_HREF,
-  SECONDARY_PHONE_DISPLAY,
-  SECONDARY_PHONE_HREF,
 } from "@/lib/contact";
 
 const sections = [
@@ -106,7 +104,6 @@ const PrivacyPolicyPage = () => (
               <div className="text-xs uppercase tracking-[0.28em] text-primary/90">Kontakt</div>
               <div className="mt-3 space-y-2 text-foreground/85">
                 <a href={PRIMARY_PHONE_HREF} className="block transition-colors hover:text-primary">{PRIMARY_PHONE_DISPLAY}</a>
-                <a href={SECONDARY_PHONE_HREF} className="block transition-colors hover:text-primary">{SECONDARY_PHONE_DISPLAY}</a>
                 <a href={`mailto:${CONTACT_EMAIL}`} className="block transition-colors hover:text-primary">{CONTACT_EMAIL}</a>
                 <div>{CONTACT_ADDRESS}</div>
               </div>

@@ -16,9 +16,6 @@ import {
   PRIMARY_PHONE_DISPLAY,
   PRIMARY_PHONE_HREF,
   PRIMARY_WHATSAPP_HREF,
-  SECONDARY_PHONE_DISPLAY,
-  SECONDARY_PHONE_HREF,
-  SECONDARY_WHATSAPP_HREF,
 } from "@/lib/contact";
 
 const PhoneField = lazy(() => import("./PhoneField"));
@@ -35,7 +32,6 @@ const contactCards = [
     label: "Telefon",
     links: [
       { label: PRIMARY_PHONE_DISPLAY, href: PRIMARY_PHONE_HREF },
-      { label: SECONDARY_PHONE_DISPLAY, href: SECONDARY_PHONE_HREF },
     ],
   },
   {
@@ -43,7 +39,6 @@ const contactCards = [
     label: "WhatsApp / Viber",
     links: [
       { label: PRIMARY_PHONE_DISPLAY, href: PRIMARY_WHATSAPP_HREF },
-      { label: SECONDARY_PHONE_DISPLAY, href: SECONDARY_WHATSAPP_HREF },
     ],
   },
   {
