@@ -20,7 +20,11 @@ const inlineEntryCss = (): Plugin => ({
       const asset = ctx.bundle[href];
       if (asset && asset.type === "asset") {
         result = result.replace(link, `<style>${asset.source}</style>`);
-        delete ctx.bundle[href];
+        // Ne brisati fajl iz bundle-a: lazy chunk-ovi ga vec imaju u svojoj
+        // preload listi, pa bi brisanje srusilo ceo sajt u produkciji
+        // ("Unable to preload CSS" -> prazan ekran). Umesto toga se isprazni
+        // sadrzaj - preload tada nadje prazan fajl i prodje bez greske.
+        asset.source = "";
       }
     }
     return result;
