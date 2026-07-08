@@ -20,8 +20,8 @@ export const AboutAtmosphere = () => (
 
       <div className="space-y-24 lg:space-y-36">
         {blocks.map((b, i) => (
-          <div key={b.title} className={`reveal-up grid lg:grid-cols-12 gap-10 lg:gap-16 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
-            <div className="lg:col-span-7 group">
+          <div key={b.title} className={`grid lg:grid-cols-12 gap-10 lg:gap-16 items-center ${i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""}`}>
+            <div className={`lg:col-span-7 group ${i % 2 === 0 ? "reveal-left" : "reveal-right"}`}>
               <div className="relative overflow-hidden rounded-3xl shadow-elegant aspect-[4/3]">
                 <img
                   src={b.img}
@@ -34,7 +34,7 @@ export const AboutAtmosphere = () => (
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
               </div>
             </div>
-            <div className="lg:col-span-5 lg:px-4">
+            <div className="reveal-up lg:col-span-5 lg:px-4">
               <div className="font-serif italic text-primary/70 text-2xl mb-4">0{i + 1}</div>
               <h3 className="font-serif text-3xl lg:text-5xl leading-[1.1] mb-6">{b.title}</h3>
               <p className="text-foreground/70 text-lg font-light leading-[1.85]">{b.text}</p>

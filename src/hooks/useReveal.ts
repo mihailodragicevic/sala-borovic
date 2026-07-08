@@ -13,7 +13,11 @@ export const useReveal = () => {
     // Measure after the next frame so freshly-navigated (and lazily-loaded)
     // content is laid out before we decide what is on screen.
     const rafId = requestAnimationFrame(() => {
-      const els = Array.from(document.querySelectorAll<HTMLElement>(".reveal-up:not(.in-view)"));
+      const els = Array.from(
+        document.querySelectorAll<HTMLElement>(
+          ".reveal-up:not(.in-view), .reveal-left:not(.in-view), .reveal-right:not(.in-view)",
+        ),
+      );
       if (!els.length) return;
 
       if (prefersReducedMotion || !("IntersectionObserver" in window)) {

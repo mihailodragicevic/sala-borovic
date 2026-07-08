@@ -122,6 +122,21 @@
     opacity: 1;
     transform: translateY(0);
   }
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: opacity 1s var(--transition-smooth), transform 1s var(--transition-smooth);
+  }
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 1s var(--transition-smooth), transform 1s var(--transition-smooth);
+  }
+  .reveal-left.in-view,
+  .reveal-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
   .hover-lift {
     transition: transform 0.5s var(--transition-smooth), box-shadow 0.5s var(--transition-smooth);
   }
@@ -191,7 +206,9 @@
     scroll-behavior: auto !important;
   }
 
-  .reveal-up {
+  .reveal-up,
+  .reveal-left,
+  .reveal-right {
     opacity: 1;
     transform: none;
     transition: none;
