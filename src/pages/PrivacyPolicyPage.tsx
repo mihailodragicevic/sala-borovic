@@ -78,7 +78,7 @@ const sections = [
 const PrivacyPolicyPage = () => (
   <Layout>
     <Seo
-      title="Politika privatnosti | Svečana sala Borović Bogatić"
+      title="Politika privatnosti | Svečana sala Borović, Bogatić"
       description="Pročitajte politiku privatnosti sajta Svečane sale Borović u Bogatiću i saznajte kako obrađujemo kontakt podatke, upite i informacije sa sajta."
       pathname="/politika-privatnosti"
     />

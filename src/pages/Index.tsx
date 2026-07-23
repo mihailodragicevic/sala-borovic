@@ -14,7 +14,7 @@ const seoSchema = [websiteSchema, organizationSchema, localBusinessSchema];
 const Index = () => (
   <Layout>
     <Seo
-      title="Svečana sala Borović Bogatić | Sala za svadbe i proslave"
+      title="Svečana sala Borović | Sala za svadbe i proslave Bogatić"
       description="Svečana sala Bogatić za svadbe, rođendane i proslave do 450 gostiju. Elegantna sala za svadbe Bogatić sa organizacijom, dekoracijom i rezervacijama."
       pathname="/"
       schema={seoSchema}

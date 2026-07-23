@@ -11,7 +11,7 @@ const contactSchema = localBusinessSchema;
 const ContactPage = () => (
   <Layout>
     <Seo
-      title="Kontakt | Svečana sala Borović Bogatić"
+      title="Kontakt | Svečana sala Borović, Bogatić"
       description="Kontaktirajte svečanu salu Borović u Bogatiću. Pozovite nas za salu za svadbe Bogatić, rođendane, proslave i rezervaciju termina."
       pathname="/kontakt"
       schema={contactSchema}

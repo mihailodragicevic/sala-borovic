@@ -4,7 +4,7 @@ import { Seo } from "@/components/site/Seo";
 const NotFound = () => (
   <div className="flex min-h-screen items-center justify-center bg-muted px-5">
     <Seo
-      title="404 | Svečana sala Borović Bogatić"
+      title="404 | Svečana sala Borović, Bogatić"
       description="Stranica koju tražite ne postoji. Vratite se na početnu stranicu sajta Svečane sale Borović u Bogatiću."
       pathname="/404"
       robots="noindex, nofollow"

@@ -106,7 +106,7 @@ const journeySteps = [
 const ServicesPage = () => (
     <Layout>
       <Seo
-        title="Ponude | Svečana sala Borović Bogatić"
+        title="Ponude | Svečana sala Borović, Bogatić"
         description="Ponude za proslave u svečanoj sali Borović u Bogatiću. Dogovor oko hrane, dodatne opcije, fleksibilna organizacija i elegantan ambijent za svadbe i proslave."
         pathname="/ponude"
         preloadImages={[appetizerImage]}
@@ -124,7 +124,7 @@ const ServicesPage = () => (
           className="pointer-events-none absolute left-24 top-24 h-48 w-48 rounded-full blur-[90px] opacity-30"
           style={{ background: "radial-gradient(circle, hsl(12 96% 76% / 0.36), transparent 68%)" }}
         />
-        <h1 className="sr-only">Ponude i dodatne opcije | Svečana sala Borović Bogatić</h1>
+        <h1 className="sr-only">Ponude i dodatne opcije | Svečana sala Borović, Bogatić</h1>
         <div className="relative mx-auto max-w-7xl px-5 pb-16 lg:px-8 lg:pb-20">
           <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14">
             <div

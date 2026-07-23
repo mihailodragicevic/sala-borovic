@@ -10,7 +10,7 @@ import aboutHeroImage from "@/assets/Unutrasnjost sale.webp";
 const AboutPage = () => (
   <Layout>
     <Seo
-      title="O nama | Svečana sala Borović Bogatić"
+      title="O nama | Svečana sala Borović, Bogatić"
       description="Upoznajte svečanu salu Borović u Bogatiću. Moderan ambijent, iskustvo u organizaciji i elegantan prostor za svadbe, proslave i porodična okupljanja."
       pathname="/o-nama"
       preloadImages={[aboutHeroImage]}

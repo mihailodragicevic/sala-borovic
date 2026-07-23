@@ -61,7 +61,7 @@ const GalleryPage = () => {
   return (
     <Layout>
       <Seo
-        title="Galerija | Svečana sala Borović Bogatić"
+        title="Galerija | Svečana sala Borović, Bogatić"
         description="Galerija svečane sale Borović u Bogatiću. Pogledajte salu za svadbe Bogatić, dekoraciju, rođendane i proslave kroz fotografije enterijera i atmosfere."
         pathname="/galerija"
       />
