@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { MessageCircle, Phone, Sparkles } from "lucide-react";
+import { Images, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-venue.webp";
 import heroImgMobile from "@/assets/responsive/hero-venue-mobile.webp";
@@ -76,24 +76,21 @@ export const Hero = () => {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-20 pt-32 lg:px-8">
-        <div className="max-w-4xl">
+        <div className="mx-auto max-w-4xl text-center lg:mx-0 lg:text-left">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full px-4 py-1.5 glass animate-fade-in">
             <Sparkles className="h-3.5 w-3.5 text-primary" />
             <span className="text-xs uppercase tracking-[0.25em] text-foreground/80">Bogatić · Mačva</span>
           </div>
 
           <h1 className="font-serif text-5xl leading-[1.02] tracking-tight animate-fade-in sm:text-6xl lg:text-8xl" style={{ animationDelay: "0.1s" }}>
-            Svečana sala
-            <br />
-            <span className="text-gradient italic">Borović</span>
+            Sala za <span className="text-gradient">svadbe i proslave</span> u Bogatiću
           </h1>
 
-          <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-foreground/80 animate-fade-in lg:text-xl" style={{ animationDelay: "0.25s" }}>
-            Savršeno mesto za vašu proslavu - svadbe, rođendani i nezaboravna slavlja u modernom i elegantnom ambijentu, do{" "}
-            <span className="text-foreground">450 gostiju</span>.
-          </p>
+          <h2 className="mx-auto mt-6 max-w-2xl text-lg font-light leading-relaxed text-foreground/80 animate-fade-in lg:mx-0 lg:text-xl" style={{ animationDelay: "0.25s" }}>
+            Elegantan prostor u srcu Mačve za venčanja, rođendane i sve vaše svečanosti
+          </h2>
 
-          <div className="mt-10 flex flex-col gap-4 animate-fade-in sm:flex-row" style={{ animationDelay: "0.4s" }}>
+          <div className="mt-10 flex flex-col items-center gap-4 animate-fade-in sm:flex-row sm:justify-center lg:justify-start" style={{ animationDelay: "0.4s" }}>
             <Button asChild variant="hero" size="xl" className="animate-pulse-glow">
               <a href={PRIMARY_PHONE_HREF}>
                 <Phone className="h-5 w-5" />
@@ -101,21 +98,21 @@ export const Hero = () => {
               </a>
             </Button>
             <Button asChild variant="glass" size="xl">
-              <Link to="/kontakt">
-                <MessageCircle className="h-5 w-5" />
-                Pošaljite poruku
+              <Link to="/galerija">
+                <Images className="h-5 w-5" />
+                Pogledaj galeriju
               </Link>
             </Button>
           </div>
 
-          <div className="mt-16 grid max-w-3xl grid-cols-2 gap-6 animate-fade-in sm:grid-cols-4" style={{ animationDelay: "0.55s" }}>
+          <div className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-6 animate-fade-in sm:grid-cols-4 lg:mx-0" style={{ animationDelay: "0.55s" }}>
             {[
               { n: "450", l: "Kapacitet gostiju" },
               { n: "13+", l: "Godina iskustva" },
               { n: "2000+", l: "Srećnih proslava" },
               { n: "4.9/5.0", l: "Prosečna ocena" },
             ].map((stat) => (
-              <div key={stat.l} className="border-l border-border/60 pl-4">
+              <div key={stat.l} className="border-border/60 text-center lg:border-l lg:pl-4 lg:text-left">
                 <div className="font-serif text-3xl text-gradient lg:text-4xl">{stat.n}</div>
                 <div className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{stat.l}</div>
               </div>
