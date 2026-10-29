@@ -36,7 +36,7 @@ export const AboutStory = () => (
               U Sali Borović smo posvećeni jednoj jedinoj stvari: da ti trenuci budu okupani svetlošću, toplinom i elegancijom kakvu zaslužuju.
             </p>
             <p className="text-foreground/60 italic font-serif text-xl">
-              Svaki detalj, od svetla lustera do poslednjeg cveta na stolu, pažljivo je odabran da bi vaše slavlje izgledalo onako kako ste ga uvek zamišljali.
+              Svaki detalj, od svetla i atmosfere do poslednjeg cveta na stolu, pažljivo je odabran da bi vaše slavlje izgledalo onako kako ste ga uvek zamišljali.
             </p>
           </div>
           <div className="mt-12 flex items-center gap-6">
