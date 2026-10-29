@@ -68,7 +68,7 @@ export const Gallery = () => {
   return (
     <section id="galerija" className="relative py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:items-end lg:text-left">
           <SectionHeading
             eyebrow="Galerija"
             title={<>Atmosfera koja <span className="text-gradient italic">oduzima dah</span></>}

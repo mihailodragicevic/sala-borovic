@@ -1,20 +1,17 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
-import about from "@/assets/about-venue.webp";
-import aboutMobile from "@/assets/responsive/about-venue-mobile.webp";
+import gallery4 from "@/assets/gallery-4.webp";
 import { PRIMARY_PHONE_HREF } from "@/lib/contact";
 
 export const About = () => (
   <section id="o-nama" className="relative overflow-hidden py-28 lg:py-40">
     <div className="mx-auto max-w-7xl px-5 lg:px-8">
       <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-        <div className="reveal-up relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-elegant">
+        <div className="reveal-up relative flex justify-center lg:block">
+          <div className="relative aspect-[4/5] w-full max-w-[520px] overflow-hidden rounded-3xl shadow-elegant md:max-w-[560px] lg:max-w-none">
             <img
-              src={about}
-              srcSet={`${aboutMobile} 640w, ${about} 1200w`}
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              src={gallery4}
               alt="Enterijer Sale Borović"
               loading="lazy"
               decoding="async"
@@ -30,7 +27,7 @@ export const About = () => (
           </div>
         </div>
 
-        <div className="reveal-up">
+        <div className="reveal-up text-center lg:text-left">
           <div className="mb-4 text-xs uppercase tracking-[0.35em] text-primary/90">O Nama</div>
           <h2 className="font-serif text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
             U srcu Mačve,
@@ -47,7 +44,7 @@ export const About = () => (
               pa svaki detalj, od menija do dekoracije, kreiramo u skladu sa vašom vizijom.
             </p>
           </div>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap justify-center gap-4 lg:justify-start">
             <Button asChild variant="hero" size="lg">
               <a href={PRIMARY_PHONE_HREF}>
                 <Phone className="h-4 w-4" />

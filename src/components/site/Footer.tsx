@@ -13,8 +13,8 @@ import {
 export const Footer = () => (
   <footer className="relative border-t border-border/60 pb-10 pt-20">
     <div className="mx-auto max-w-7xl px-5 lg:px-8">
-      <div className="grid gap-10 md:grid-cols-5">
-        <div className="md:col-span-2">
+      <div className="grid gap-10 text-center md:grid-cols-5 md:text-left">
+        <div className="flex flex-col items-center md:col-span-2 md:items-start">
           <Link to="/" aria-label="Sala Borović - početna" className="inline-block">
             <img src={logo} alt="Svečana sala Borović" width="157" height="64" decoding="async" className="h-16 w-auto object-contain" />
           </Link>
@@ -23,7 +23,7 @@ export const Footer = () => (
             Elegantan ambijent za vaše najznačajnije trenutke. Više od trinaest godina kreiramo nezaboravne proslave u srcu Mačve.
           </p>
         </div>
-        <div>
+        <div className="flex flex-col items-center md:items-start">
           <div className="mb-4 text-xs uppercase tracking-widest text-primary">Brzi linkovi</div>
           <ul className="space-y-2 text-foreground/80">
             <li><Link to="/" className="hover:text-foreground">Početna</Link></li>
@@ -33,7 +33,7 @@ export const Footer = () => (
             <li><Link to="/kontakt" className="hover:text-foreground">Kontakt</Link></li>
           </ul>
         </div>
-        <div>
+        <div className="flex flex-col items-center md:items-start">
           <div className="mb-4 text-xs uppercase tracking-widest text-primary">Kontakt</div>
           <ul className="space-y-2 text-foreground/80">
             <li><a href={PRIMARY_PHONE_HREF} className="hover:text-foreground">{PRIMARY_PHONE_DISPLAY}</a></li>
@@ -41,9 +41,9 @@ export const Footer = () => (
             <li>{CONTACT_ADDRESS}</li>
           </ul>
         </div>
-        <div>
+        <div className="flex flex-col items-center md:items-start">
           <div className="mb-4 text-xs uppercase tracking-widest text-primary">Zapratite nas</div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center gap-3 md:justify-start">
             <a
               href={INSTAGRAM_HREF}
               target="_blank"
@@ -65,7 +65,7 @@ export const Footer = () => (
           </div>
         </div>
       </div>
-      <div className="mt-14 flex flex-col justify-between gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row">
+      <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-border/60 pt-6 text-center text-xs text-muted-foreground sm:flex-row sm:text-left">
         <div>© {new Date().getFullYear()} Svečana sala Borović. Sva prava zadržana.</div>
         <Link
           to="/politika-privatnosti"

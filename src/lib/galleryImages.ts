@@ -83,6 +83,7 @@ const featuredFilenames = [
 
 const spanMap: Record<string, string> = {
   "gallery-2.webp": "lg:col-span-2 lg:row-span-2",
+  "about-venue.webp": "col-span-2 lg:col-span-1",
 };
 
 export const featuredGalleryImages = featuredFilenames
