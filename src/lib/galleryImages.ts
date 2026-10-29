@@ -9,7 +9,7 @@ const imageModules = import.meta.glob("../assets/*.{png,webp,PNG,WEBP}", {
   import: "default",
 }) as Record<string, string>;
 
-const EXCLUDED_FILES = new Set(["logo.png", "gallery-4.webp"]);
+const EXCLUDED_FILES = new Set(["logo.png", "logo.webp", "gallery-4.webp"]);
 
 const preferredOrder = [
   "gallery-2.webp",

@@ -114,15 +114,15 @@ const ServicesPage = () => (
       <section className="relative overflow-hidden pt-36">
         <div
           className="pointer-events-none absolute -left-36 top-8 h-[34rem] w-[34rem] rounded-full blur-3xl opacity-55"
-          style={{ background: "radial-gradient(circle, hsl(28 92% 70% / 0.52), transparent 72%)" }}
+          style={{ background: "radial-gradient(circle, hsl(320 75% 60% / 0.52), transparent 72%)" }}
         />
         <div
           className="pointer-events-none absolute -left-6 top-36 h-80 w-56 blur-3xl opacity-35"
-          style={{ background: "linear-gradient(180deg, hsl(38 96% 78% / 0.42), transparent 82%)" }}
+          style={{ background: "linear-gradient(180deg, hsl(290 75% 60% / 0.42), transparent 82%)" }}
         />
         <div
           className="pointer-events-none absolute left-24 top-24 h-48 w-48 rounded-full blur-[90px] opacity-30"
-          style={{ background: "radial-gradient(circle, hsl(12 96% 76% / 0.36), transparent 68%)" }}
+          style={{ background: "radial-gradient(circle, hsl(340 80% 65% / 0.36), transparent 68%)" }}
         />
         <h1 className="sr-only">Ponude i dodatne opcije | Svečana sala Borović, Bogatić</h1>
         <div className="relative mx-auto max-w-7xl px-5 pb-16 lg:px-8 lg:pb-20">
